@@ -1,0 +1,136 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GridManager : MonoBehaviour
+{
+    GameObject[,] grid;
+
+    public SizeData sizeData;
+    //[HideInInspector]
+    public int gridWidth;
+
+    public GameObject Parent;
+
+    [Header("Prefabs")]
+    public GameObject prefab;
+    public GameObject prefab2;
+    public GameObject prefab3;
+    public GameObject mirror;
+    public GameObject mirror2;
+
+    void Awake()
+    {
+        switch (sizeData)
+        {
+            case SizeData.Small_4x4:
+                gridWidth = 4;
+                break;
+            case SizeData.Medium_6x6:
+                gridWidth = 6;
+                break;
+            case SizeData.Large_8x8:
+                gridWidth = 8;
+                break;
+        }
+
+        grid = new GameObject[gridWidth, gridWidth];
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridWidth; j++)
+            {
+                grid[i, j] = null;
+            }
+        }
+    }
+    
+    void Start(){
+        //on creer un bloc exemple
+        AddBloc("generator red",0 ,4,1);
+        AddBloc("generator green",1 ,0);
+        AddBloc("generator blue",2 ,0);
+        AddBloc("mirror",0,1);
+        AddBloc("mirror",1,1);
+        AddBloc("mirror",2,1);
+        AddBloc("magic mirror",0,2);
+        AddBloc("magic mirror",1,2);
+        AddBloc("magic mirror",2,2);
+        
+        GetComponent<LaserManager>().GenerateLasers();
+    }
+
+    public void AddBloc(string blocstr, int x, int y,int orientation = 0){
+        //instanciate bloc
+        GameObject bloc = GetComponent<BlocManager>().FindBloc(blocstr);
+        if(bloc == null){
+            Debug.Log("Bloc not found");
+            return;
+        }
+
+        GameObject newBloc = Instantiate(bloc, new Vector3((x-gridWidth/2), (gridWidth/2)-y, 0), Quaternion.identity);
+        newBloc.transform.parent = Parent.transform;
+        newBloc.GetComponent<Bloc>().orientation = orientation;
+        newBloc.GetComponent<Bloc>().UpdateSprite();
+        //add to grid
+        grid[x, y] = newBloc;
+    }
+
+    public List<GeneratorData> GetGeneratorList (){
+        if (grid == null){
+            return null;
+        }
+
+        List<GeneratorData> generatorList = new List<GeneratorData>();
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridWidth; j++)
+            {
+                if (grid[i, j] != null){
+                    Bloc bloc = grid[i, j].GetComponent<Bloc>();
+                    if (bloc is Generator){
+                        Generator gen = grid[i, j].GetComponent<Generator>();
+                        generatorList.Add(new GeneratorData(new Vector2(i, j), gen.orientation, gen.color));
+                    }
+                }
+            }
+        }
+        return generatorList;
+    }
+
+    public bool IsEmpty(int x, int y){
+        return grid[x, y] == null;
+    }
+
+    public Bloc GetBloc(int x, int y){
+        if (grid[x, y] == null){
+            return null;
+        }
+        return grid[x, y].GetComponent<Bloc>();
+    }
+
+    public GameObject GetBlocObject(int x, int y){
+        return grid[x, y];
+    }
+
+    public void RotateBloc(int x, int y){
+        if (grid[x, y] == null){
+            return;
+        }
+        Bloc bloc = grid[x, y].GetComponent<Bloc>();
+        bloc.RotateClockwise();
+        GetComponent<LaserManager>().GenerateLasers();
+    }
+
+    public void RemoveBlocId(int x, int y){
+        if (grid[x, y] == null){
+            return;
+        }
+        grid[x, y] = null;
+        GetComponent<LaserManager>().GenerateLasers();
+    }
+
+    public void SetBlocId(int x, int y, GameObject bloc){
+        grid[x, y] = bloc;
+        GetComponent<LaserManager>().GenerateLasers();
+    }
+}
