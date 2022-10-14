@@ -9,12 +9,33 @@ public class InpData{
     public int r,g,b;
     public bool show;
 
+    public InpData[] generated;
+    public bool destroy;
+
+    public InpData(int orientation, int r, int g, int b, bool show,bool destroy){
+        this.orientation = orientation;
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.show = show;
+        this.destroy = destroy;
+    }
+
     public InpData(int orientation, int r, int g, int b, bool show){
         this.orientation = orientation;
         this.r = r;
         this.g = g;
         this.b = b;
         this.show = show;
+        this.destroy = false;
+    }
+
+    public void InitGenerator(int count){
+        generated = new InpData[count];
+    }
+
+    public void AddGenerated(int index, InpData inpData){
+        generated[index] = inpData;
     }
 
     // cas ou osef

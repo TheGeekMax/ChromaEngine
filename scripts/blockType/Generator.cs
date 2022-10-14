@@ -6,6 +6,10 @@ public class Generator : Bloc
 {
     public Vector3 color;
 
+    public override InpData UpdateInput(InpData inp){
+        return new InpData(inp.orientation, (int)inp.r, (int)inp.g, (int)inp.b, false,true);
+    }
+
     void OnDrawGizmos()
     {
         //affichage de l'orientation avec un trais et qui respecte la rotation du bloc

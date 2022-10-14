@@ -67,21 +67,33 @@ public class LaserManager : MonoBehaviour
         if (beginOr == 0){
             //definie sa priorité a 0.1
             newLaser.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            if(topLaser[x,y] != null){
+                Destroy(topLaser[x,y]);
+            }
             topLaser[x, y] = newLaser;
         }
         else if (beginOr == 1){
             //definie sa priorité a 0.2
             newLaser.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            if(rightLaser[x,y] != null){
+                Destroy(rightLaser[x,y]);
+            }
             rightLaser[x, y] = newLaser;
         }
         else if (beginOr == 2){
             //definie sa priorité a 0.3
             newLaser.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            if(bottomLaser[x,y] != null){
+                Destroy(bottomLaser[x,y]);
+            }
             bottomLaser[x, y] = newLaser;
         }
         else if (beginOr == 3){
             //definie sa priorité a 0.4
             newLaser.GetComponent<SpriteRenderer>().sortingOrder = 4;
+            if(leftLaser[x,y] != null){
+                Destroy(leftLaser[x,y]);
+            }
             leftLaser[x, y] = newLaser;
         }
     }
@@ -158,7 +170,7 @@ public class LaserManager : MonoBehaviour
                 }
             }
 
-            
+            List<GeneratorData> added = new List<GeneratorData>();
             for (int i = 0; i < generatorList.Count; i++){
                 //etape 2 on place le laser a l'emplacement du node si vide
                 if (gridManager.IsEmpty((int)generatorList[i].position.x, (int)generatorList[i].position.y)){
@@ -167,8 +179,9 @@ public class LaserManager : MonoBehaviour
 
                     //execute la fonction de l'objet
                     Bloc bloc = gridManager.GetBloc((int)generatorList[i].position.x, (int)generatorList[i].position.y);
-                    if (bloc.GetType() != typeof(Generator)){
-                        InpData new_inp = bloc.UpdateInput(generatorList[i].ToInpData());
+                    InpData new_inp = bloc.UpdateInput(generatorList[i].ToInpData());
+                    if (!new_inp.destroy){
+                        
                         //on actualise la valeur de la node
                         if(new_inp.show){
                             AddLaser(generatorList[i].orientation, new_inp.orientation, (int)generatorList[i].position.x, (int)generatorList[i].position.y, new Vector3(new_inp.r, new_inp.g, new_inp.b));
@@ -176,6 +189,16 @@ public class LaserManager : MonoBehaviour
 
                         generatorList[i].orientation = new_inp.orientation;
                         generatorList[i].color = new Vector3(new_inp.r, new_inp.g, new_inp.b);
+
+                        //partie generation des nouvelles node des lasers
+                        InpData[] toAdd = new_inp.generated;
+                        if(toAdd != null){
+                            for(int j = 0; j < toAdd.Length; j ++){
+                                GeneratorData temp =new GeneratorData( generatorList[i].position, toAdd[j].orientation, new Vector3(toAdd[j].r, toAdd[j].g, toAdd[j].b));
+                                temp.lifespan = generatorList[i].lifespan - 2;
+                                added.Add(temp);
+                            }
+                        }
                     }
                     else{
                         generatorList.RemoveAt(i);
@@ -183,8 +206,18 @@ public class LaserManager : MonoBehaviour
                     }
                 }
             }
+            //on ajoute les elts de added a generatorList
+            for (int i = 0; i < added.Count; i++){
+                generatorList.Add(added[i]);
+            }
 
-            
+            //etape 3 bis : on detruit les GeneratorData qui ont une durée de vie de 0
+            for (int i = 0; i < generatorList.Count; i++){
+                if (generatorList[i].lifespan <= 0){
+                    generatorList.RemoveAt(i);
+                    i--;
+                }
+            }
 
             //etape 4 on on avance les nodes d'une case
             for (int i = 0; i < generatorList.Count; i++){
