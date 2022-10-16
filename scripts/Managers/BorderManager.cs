@@ -15,7 +15,7 @@ public class BorderManager : MonoBehaviour{
     int gridwidth;
     SizeData sizeData;
 
-    void Start(){
+    public void Init(){
         //attendre que le grid manager soit pret
 
         sizeData = GetComponent<GridManager>().sizeData;
@@ -32,20 +32,13 @@ public class BorderManager : MonoBehaviour{
                 break;
         }
         //on decale le tilemap pour le centrer
-        tilemapRenderer.transform.position = new Vector3(-gridwidth/2f-.5f,-gridwidth/2f+.5f,0);
+        tilemapRenderer.transform.position = new Vector3(-gridwidth/2f-.5f,gridwidth/2f-.5f,0);
            
         //def du tableau de limites
         limitsTable = new bool[gridwidth,gridwidth];
         for(int i = 0; i < gridwidth; i++){
             for(int j = 0; j < gridwidth; j++){
                 limitsTable[i,j] = false;
-            }
-        }
-
-        //ajout des bordures
-        for(int i = 0; i < gridwidth; i++){
-            for(int j = 0; j < gridwidth; j++){
-                AddBlocToBorder(i,j);
             }
         }
     }
@@ -57,7 +50,7 @@ public class BorderManager : MonoBehaviour{
         //etape 2 : on ajoute le bloc aux limites
         limitsTable[x,y] = true;
         //etape 3 : on ajoute le bloc a la tilemap
-        tilemapRenderer.SetTile(new Vector3Int(x,y,0), tile);
+        tilemapRenderer.SetTile(new Vector3Int(x,-y,0), tile);
     }
 
     public bool IsBlocInBorder(Vector2 pos){

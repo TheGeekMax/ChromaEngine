@@ -21,7 +21,7 @@ public class LaserManager : MonoBehaviour
     GameObject[,] bottomLaser;
     GameObject[,] leftLaser;
 
-    void Awake(){
+    public void Init(){
         //get grid width
         int gridWidth = GetComponent<GridManager>().gridWidth;
 

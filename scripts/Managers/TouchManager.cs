@@ -12,6 +12,10 @@ public class TouchManager : MonoBehaviour
     GameObject choosenBloc;
     bool dontMove;
 
+    void Awake(){
+        Input.multiTouchEnabled = false;
+    }
+
     void Start(){
         gridWidth = GetComponent<GridManager>().gridWidth;
     }
@@ -25,10 +29,6 @@ public class TouchManager : MonoBehaviour
             float x = Mathf.Ceil(touchPos.x)+(gridWidth/2)-1;
             float y = (gridWidth/2)-Mathf.Ceil(touchPos.y);
             Vector2 intTouchPos = new Vector2(Mathf.Clamp(x,0,gridWidth-1),Mathf.Clamp(y,0,gridWidth-1));
-
-
-
-            Debug.Log(touchPos);
 
             if(touch.phase == TouchPhase.Began){
                 //debut

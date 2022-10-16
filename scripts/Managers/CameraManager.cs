@@ -22,9 +22,8 @@ public class CameraManager : MonoBehaviour
     public GameObject bord_b;
     public GameObject bord_l;
 
-
-    void Start(){
-        //etape 1 : on recupere la taille de la grille
+    public void Init(){
+         //etape 1 : on recupere la taille de la grille
         gridwidth = GetComponent<GridManager>().gridWidth;
         sizeData = GetComponent<GridManager>().sizeData;
 
