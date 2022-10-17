@@ -53,6 +53,7 @@ public class GridManager : MonoBehaviour
     }
     
     void Start(){
+        
         if(GetComponent<ImportManager>().entered){
             GetComponent<ImportManager>().Decode();
             GetComponent<LaserManager>().GenerateLasers();

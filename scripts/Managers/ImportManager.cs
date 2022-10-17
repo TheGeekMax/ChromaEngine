@@ -10,8 +10,15 @@ public class ImportManager : MonoBehaviour
     public bool entered = false;
 
     void Awake(){
+        if(GameObject.FindWithTag("Keep") != null){
+                Debug.Log("connard");
+                GameObject keep = GameObject.FindWithTag("Keep");
+                levelCode = keep.GetComponent<Keep>().LevelCode;
+            }
         if(levelCode != ""){
             entered = true;
+            //test if object with tag "Keep" exists
+            
         }
     }
 
