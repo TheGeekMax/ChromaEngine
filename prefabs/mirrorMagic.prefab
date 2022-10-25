@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 569604104, guid: b5e75ba04607e8f4788f29c0c1daf160, type: 3}
+  m_Sprite: {fileID: -1877515234, guid: 103dbf37def67284ab7509f0244aa381, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6b3017a9bacb42bcb48f26b0c4e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inp_history: []
   orientation: 0
-  or0: {fileID: 569604104, guid: b5e75ba04607e8f4788f29c0c1daf160, type: 3}
-  or1: {fileID: 569604104, guid: b5e75ba04607e8f4788f29c0c1daf160, type: 3}
-  or2: {fileID: 569604104, guid: b5e75ba04607e8f4788f29c0c1daf160, type: 3}
-  or3: {fileID: 569604104, guid: b5e75ba04607e8f4788f29c0c1daf160, type: 3}
+  or0: {fileID: -1877515234, guid: 103dbf37def67284ab7509f0244aa381, type: 3}
+  or1: {fileID: -1877515234, guid: 103dbf37def67284ab7509f0244aa381, type: 3}
+  or2: {fileID: -1877515234, guid: 103dbf37def67284ab7509f0244aa381, type: 3}
+  or3: {fileID: -1877515234, guid: 103dbf37def67284ab7509f0244aa381, type: 3}

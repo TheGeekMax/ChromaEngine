@@ -11,15 +11,25 @@ public class Bloc : MonoBehaviour
     public Sprite or2;
     public Sprite or3;
 
-    //fonction de MonoBehaviour
-    void Start()
-    {
+    void Awake(){
+        inp_history = new List<InpData>();
+    }
+    
+    void Start(){
         UpdateSprite();
+    }
+
+    public virtual void LaserReset(){
+        inp_history.Clear();
+    }
+
+    public void Test(){
+        Debug.Log("test");
     }
 
 
     //fonction annexes pour changer les données 
-    public void RotateClockwise()
+    public virtual void RotateClockwise()
     {
         orientation = (orientation + 1) % 4;
         UpdateSprite();

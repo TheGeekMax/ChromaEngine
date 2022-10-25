@@ -22,9 +22,8 @@ public class CameraManager : MonoBehaviour
     public GameObject bord_b;
     public GameObject bord_l;
 
-
-    void Start(){
-        //etape 1 : on recupere la taille de la grille
+    public void Init(){
+         //etape 1 : on recupere la taille de la grille
         gridwidth = GetComponent<GridManager>().gridWidth;
         sizeData = GetComponent<GridManager>().sizeData;
 
@@ -35,7 +34,7 @@ public class CameraManager : MonoBehaviour
 
         //etape 3 : on adapte la camera en changeant la taille de la zone de rendu puis on la positionne
         Camera.GetComponent<Camera>().orthographicSize = gridwidth+2;
-        Camera.transform.position += new Vector3(0,gridwidth/2,0);
+        Camera.transform.position = new Vector3(0,gridwidth/2,-10);
 
         //etape 4 : placement des contours
         contour_tl.transform.position = new Vector3(-gridwidth/2-.5f,gridwidth/2+.5f,0);

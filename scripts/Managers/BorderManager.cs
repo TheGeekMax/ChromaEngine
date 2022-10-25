@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class BorderManager : MonoBehaviour{
 
-    public GameObject parent;
-    public GameObject backgroundPrefab;
+    //utilise une tilemap comme affichage
+    public Tilemap tilemapRenderer;
+    //puis le tile a utiliser
+    public Tile tile;
+
 
     bool[,] limitsTable;
     int gridwidth;
     SizeData sizeData;
 
-    void Start(){
+    public void Init(){
         //attendre que le grid manager soit pret
 
         sizeData = GetComponent<GridManager>().sizeData;
@@ -27,6 +31,8 @@ public class BorderManager : MonoBehaviour{
                 gridwidth = 8;
                 break;
         }
+        //on decale le tilemap pour le centrer
+        tilemapRenderer.transform.position = new Vector3(-gridwidth/2f-.5f,gridwidth/2f-.5f,0);
            
         //def du tableau de limites
         limitsTable = new bool[gridwidth,gridwidth];
@@ -35,29 +41,6 @@ public class BorderManager : MonoBehaviour{
                 limitsTable[i,j] = false;
             }
         }
-
-        //ajout des bordures
-        AddBlocToBorder(0,0);
-        AddBlocToBorder(1,0);
-        AddBlocToBorder(2,0);
-        AddBlocToBorder(0,1);
-        AddBlocToBorder(1,1);
-        AddBlocToBorder(2,1);
-        AddBlocToBorder(0,2);
-        AddBlocToBorder(1,2);
-        AddBlocToBorder(2,2);
-
-        AddBlocToBorder(5,0);
-        AddBlocToBorder(5,1);
-        AddBlocToBorder(5,2);
-        AddBlocToBorder(5,3);
-        AddBlocToBorder(5,4);
-        AddBlocToBorder(5,5);
-        AddBlocToBorder(4,5);
-        AddBlocToBorder(3,5);
-        AddBlocToBorder(2,5);
-        AddBlocToBorder(1,5);
-        AddBlocToBorder(0,5);
     }
 
     public void AddBlocToBorder(int x, int y){
@@ -66,11 +49,21 @@ public class BorderManager : MonoBehaviour{
         }
         //etape 2 : on ajoute le bloc aux limites
         limitsTable[x,y] = true;
-        //GameObject newone = Instantiate(backgroundPrefab, new Vector3((x-gridwidth/2), (gridwidth/2)-y, 0), Quaternion.identity, parent.transform);
-        //newone.transform.parent = parent.transform;
+        //etape 3 : on ajoute le bloc a la tilemap
+        tilemapRenderer.SetTile(new Vector3Int(x,-y,0), tile);
     }
 
     public bool IsBlocInBorder(Vector2 pos){
         return limitsTable[(int)pos.x,(int)pos.y];
+    }
+
+    public void ToggleBorder(int x, int y){
+        if(limitsTable[x,y]){
+            limitsTable[x,y] = false;
+            tilemapRenderer.SetTile(new Vector3Int(x,-y,0), null);
+        }else{
+            limitsTable[x,y] = true;
+            tilemapRenderer.SetTile(new Vector3Int(x,-y,0), tile);
+        }
     }
 }
