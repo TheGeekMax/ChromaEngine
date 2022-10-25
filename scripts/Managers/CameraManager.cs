@@ -34,7 +34,7 @@ public class CameraManager : MonoBehaviour
 
         //etape 3 : on adapte la camera en changeant la taille de la zone de rendu puis on la positionne
         Camera.GetComponent<Camera>().orthographicSize = gridwidth+2;
-        Camera.transform.position += new Vector3(0,gridwidth/2,0);
+        Camera.transform.position = new Vector3(0,gridwidth/2,-10);
 
         //etape 4 : placement des contours
         contour_tl.transform.position = new Vector3(-gridwidth/2-.5f,gridwidth/2+.5f,0);

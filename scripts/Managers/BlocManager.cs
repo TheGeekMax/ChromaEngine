@@ -41,7 +41,7 @@ public class BlocManager : MonoBehaviour
     }
 
     public BlocData FindBlocDataWithGameObject(GameObject go){
-        Debug.Log("FindBlocDataWithGameObject");
+        //Debug.Log("FindBlocDataWithGameObject");
         foreach(BlocData bloc in blocs){
             if(bloc.prefab == go){
                 return bloc;
@@ -51,12 +51,16 @@ public class BlocManager : MonoBehaviour
     }
 
     public int FindBlocIdWithGameObject(GameObject go){
-        Debug.Log("FindBlocIdWithGameObject");
+        //Debug.Log("FindBlocIdWithGameObject");
         for(int i = 0; i < blocs.Count; i++){
             if(blocs[i].prefab == go){
                 return i;
             }
         }
         return -1;
+    }
+
+    public int GetLength(){
+        return blocs.Count;
     }
 }

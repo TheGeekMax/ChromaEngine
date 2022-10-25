@@ -178,8 +178,8 @@ TextureImporter:
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,8 +199,8 @@ TextureImporter:
         y: 240
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,8 +325,8 @@ TextureImporter:
         y: 240
         width: 16
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 5, y: 0, z: 5, w: 0}
       outline: []
       physicsShape: []
@@ -388,8 +388,8 @@ TextureImporter:
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -409,8 +409,8 @@ TextureImporter:
         y: 224
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -989,6 +989,279 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: up arrow
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24b6bbf0054c0854a82a9204ec3c8b14
+      internalID: 846840230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: down arrow
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5ec5e698253fb439708b2324829eae
+      internalID: -1650554250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameSprites_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41afc780f2b1d7488549efe48a5cb32
+      internalID: 1864427885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light_off
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a5a6b486de51846b827c80524608c8
+      internalID: 1015367895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light_on
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0783f389f6f733c46a8817e56420e928
+      internalID: -994779593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: led_light
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e637ef43c625846be4a352c7f87947
+      internalID: -759707113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: led_ bloc
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a466f0cf73aafe946983941e610a92b1
+      internalID: 668762285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unifier_red
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5100ac76cd81fb146a6175db85fdf013
+      internalID: 734632283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttonAdd
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a74b9a1b348e834e8120f8b83f07c30
+      internalID: 1953616616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttonremove
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc83a09843ec07d439fc8cf1ff8acd10
+      internalID: 2001680647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttonLock
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f637cddb0a79ab949871a49db5dcd701
+      internalID: -1693497203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unifier green
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40e73b14afca3a4409effcfdc49a1af8
+      internalID: -64792350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unifier_blue
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df9f6dfc159389f4e9ede87c5f774585
+      internalID: 846857355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1000,12 +1273,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      buttonLock: -1693497203
+      gameSprites_5: 1318220533
       adder 2: -640640377
       border b: -1267477750
       gameSprites_32: 371345690
       adder 0: 810827872
       gameSprites_48: 579809682
       mirror 1: -2053516575
+      gameSprites_7: -1139258512
       mixer 2: -1653265708
       gameSprites_40: -1292946613
       background v1: 1142581820
@@ -1014,46 +1290,68 @@ TextureImporter:
       border tr: -341220252
       adder 3: -1163712662
       placeable: -1605509574
+      gameSprites_3: -2043143610
       border br: 192755794
       gameSprites_31: -1560045361
       or 3: 857728347
+      gameSprites_14: 1864427885
       gameSprites_24: -1117309336
       gameSprites_49: 1720608868
       background: 436131337
       and 3: 1881307539
+      gameSprites_11: -1745708920
+      light_off: 1015367895
+      gameSprites_13: -586926140
       border t: 1137361248
       background v3: 310932447
       gameSprites_25: -1181437344
+      led_light: -759707113
+      buttonAdd: 1953616616
+      gameSprites_10: -608826374
+      gameSprites_4: 455051174
       adder 1: 314445508
       non placeable: -1062788977
+      unifier green: -64792350
       background v2: -1466834653
+      gameSprites_8: 1727407023
+      gameSprites_9: -733944296
       gameSprites_47: 760347144
       splitter: -1877515234
       or 1: 874358265
       gameSprites_53: 2003008329
       and 0: 106080844
+      up arrow: 846840230
       and 2: -49108468
+      gameSprites_6: 1128229220
       border l: -22446431
+      down arrow: -1650554250
+      light_on: -994779593
       laser 2: -260802604
       border tl: -1118629861
       border r: -1517617603
       border bl: 664708439
+      unifier_blue: 846857355
       laser 1: 1930750225
       laser 0: 562943068
       laser 3: 214320787
+      gameSprites_2: 743078405
       or 2: -623830026
+      led_ bloc: 668762285
       or 0: -303394766
       gameSprites_41: 733344939
       mirror 0: 1258386523
       bloc: 1569284257
       mixer 3: 2005858492
+      unifier_red: 734632283
       mixer 0: 1475831686
       gameSprites_33: 834472337
       lock: 1638868675
+      gameSprites_12: -1453134098
       mixer 1: -155709495
       button up: -1636051888
       and 1: -492285930
       gameSprites_39: 1839199691
+      buttonremove: 2001680647
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

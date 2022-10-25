@@ -117,6 +117,13 @@ public class LaserManager : MonoBehaviour
                 if (leftLaser[i, j] != null){
                     Destroy(leftLaser[i, j]);
                 }
+
+                GameObject current = GetComponent<GridManager>().GetBlocObject(i,j);
+                if(current != null && !(current.GetComponent<Bloc>() is Generator)){
+                    // Debug.Log("current : " + i + " " + j);
+                    // Debug.Log("this is an" + current.GetComponent<Bloc>() );
+                    current.GetComponent<Bloc>().LaserReset();
+                }
             }
         }
         //etape2 : reinitialisation des tableaux
@@ -189,13 +196,14 @@ public class LaserManager : MonoBehaviour
 
                         generatorList[i].orientation = new_inp.orientation;
                         generatorList[i].color = new Vector3(new_inp.r, new_inp.g, new_inp.b);
+                        generatorList[i].lifespan -= 1;
 
                         //partie generation des nouvelles node des lasers
                         InpData[] toAdd = new_inp.generated;
                         if(toAdd != null){
                             for(int j = 0; j < toAdd.Length; j ++){
                                 GeneratorData temp =new GeneratorData( generatorList[i].position, toAdd[j].orientation, new Vector3(toAdd[j].r, toAdd[j].g, toAdd[j].b));
-                                temp.lifespan = generatorList[i].lifespan - 2;
+                                temp.lifespan = generatorList[i].lifespan;
                                 added.Add(temp);
                             }
                         }
@@ -236,6 +244,7 @@ public class LaserManager : MonoBehaviour
                         break;
                 }
             }
-        } 
+        }
+        GetComponent<WinManager>().IsWin();
     }
 }

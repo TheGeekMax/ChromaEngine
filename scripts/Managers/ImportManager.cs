@@ -6,15 +6,16 @@ public class ImportManager : MonoBehaviour
 {  
     public string levelCode;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool entered = false;
 
     void Awake(){
         if(GameObject.FindWithTag("Keep") != null){
-                Debug.Log("connard");
-                GameObject keep = GameObject.FindWithTag("Keep");
-                levelCode = keep.GetComponent<Keep>().LevelCode;
-            }
+            GameObject keep = GameObject.FindWithTag("Keep");
+            levelCode = keep.GetComponent<Keep>().LevelCode;
+            GetComponent<SandboxManager>().sandboxMode = keep.GetComponent<Keep>().SandBoxMode;
+        }
+        GetComponent<SandboxManager>().UpdateSandboxMod();
         if(levelCode != ""){
             entered = true;
             //test if object with tag "Keep" exists
@@ -75,8 +76,6 @@ public class ImportManager : MonoBehaviour
             int[] id = alphabet.tobinary(code[i+1]);
             //Debug.Log("id = " + id[0] + id[1] + id[2] + id[3]);
             for(int j = 0; j < 4; j++){
-                Debug.Log(curx + " " + cury);
-                Debug.Log(id[j]);
                 if((id[j]) != 0){
                     borderManager.AddBlocToBorder(curx,cury);
                 }
@@ -101,14 +100,13 @@ public class ImportManager : MonoBehaviour
                         for(int j = 0; j < blocId.Length; j++){
                             temp = temp + blocId[j];
                         }
-                        Debug.Log(temp);
                         BlocData current = blocManager.FindBlocDataWithId(alphabet2.binaryto10(blocId));
                         if(current == null){
-                            Debug.Log("Bloc non trouve");
+                            //Debug.Log("Bloc non trouve");
                         }
                         Vector2Int blocPos = alphabet2.binaryToCoors(alphabet2.tobinary(code[i+1]));
-                        Debug.Log("Bloc "+current.name+" en "+blocPos);
-                        gridManager.AddBloc(current.name, blocPos.x, blocPos.y);
+                        //Debug.Log("Bloc "+current.name+" en "+blocPos);
+                        gridManager.AddBloc(current.name, blocPos.x, blocPos.y,(int)Random.Range(0, 4));
                         i++;
                     }
                     break;
@@ -116,7 +114,7 @@ public class ImportManager : MonoBehaviour
                     int[] bd = alphabet2.tobinary(code[i]);
                     BlocData cr = blocManager.FindBlocDataWithId(alphabet2.binaryto10(bd));
                     if(cr == null){
-                        Debug.Log("Bloc non trouve");
+                        //Debug.Log("Bloc non trouve");
                     }
                         gridManager.AddBlocToFreeSpace(cr.name);
                     break;
@@ -171,7 +169,7 @@ public class ImportManager : MonoBehaviour
                 if(!borderManager.IsBlocInBorder(new Vector2(i,j))){
                     BlocData current = gridManager.GetBlocDataAt(i,j);
                     if(current == null){
-                        Debug.Log("Bloc non trouve");
+                        //Debug.Log("Bloc non trouve");
                     }else{
                         code += alphabet2.frombinary(alphabet2.tenToBinary(blocManager.FindBlocIdWithGameObject(current.prefab)));
                         code += alphabet2.frombinary(alphabet2.coorsToBinary(new Vector2Int(i,j)));
@@ -187,7 +185,7 @@ public class ImportManager : MonoBehaviour
                 if(borderManager.IsBlocInBorder(new Vector2(i,j))){
                     BlocData current = gridManager.GetBlocDataAt(i,j);
                     if(current == null){
-                        Debug.Log("Bloc non trouve");
+                        //Debug.Log("Bloc non trouve");
                     }else{
                         code += alphabet2.frombinary(alphabet2.tenToBinary(blocManager.FindBlocIdWithGameObject(current.prefab)));
                     }

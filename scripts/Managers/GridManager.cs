@@ -15,13 +15,6 @@ public class GridManager : MonoBehaviour
 
     public GameObject Parent;
 
-    [Header("Prefabs")]
-    public GameObject prefab;
-    public GameObject prefab2;
-    public GameObject prefab3;
-    public GameObject mirror;
-    public GameObject mirror2;
-
     public void Init(){
         switch (sizeData)
         {
@@ -61,23 +54,10 @@ public class GridManager : MonoBehaviour
         }
         Init();
 
-        //on creer un bloc exemple
-        AddBloc("generator red",0 ,4,1);
-        AddBloc("generator green",1 ,0);
-        AddBloc("generator blue",2 ,0);
-        AddBloc("mirror",0,1);
-        AddBloc("mirror",1,1);
-        AddBloc("mirror",2,1);
-        AddBloc("magic mirror",0,2);
-        AddBloc("magic mirror",1,2);
-        AddBloc("magic mirror",2,2);
-
         //on ajoute le border
         for(int i = 0; i < gridWidth; i++){
             for(int j = 0; j < gridWidth; j++){
-                if(j != 4){
-                    GetComponent<BorderManager>().AddBlocToBorder(i,j);
-                }
+                GetComponent<BorderManager>().AddBlocToBorder(i,j);
             }
         }
 
@@ -90,7 +70,6 @@ public class GridManager : MonoBehaviour
         //instanciate bloc
         GameObject bloc = GetComponent<BlocManager>().FindBloc(blocstr);
         if(bloc == null){
-            Debug.Log("Bloc not found");
             return;
         }
 
@@ -110,6 +89,17 @@ public class GridManager : MonoBehaviour
             if(grid[x,y] == null && GetComponent<BorderManager>().IsBlocInBorder(new Vector2(x,y))){
                 AddBloc(blocstr, x, y, (int)Random.Range(0, 4));
                 return;
+            }
+        }
+    }
+
+    public void AddBlocToNearest(string blocstr){
+        for(int i = 0; i < gridWidth; i++){
+            for(int j = 0; j < gridWidth; j++){
+                if(grid[i,j] == null){
+                    AddBloc(blocstr, i, j, (int)Random.Range(0, 4));
+                    return;
+                }
             }
         }
     }
@@ -170,6 +160,16 @@ public class GridManager : MonoBehaviour
         GetComponent<LaserManager>().GenerateLasers();
     }
 
+    public void RemoveBloc(int x, int y){
+        if (grid[x, y] == null){
+            return;
+        }
+        Destroy(grid[x, y]);
+        grid[x, y] = null;
+        ids[x, y] = -1;
+        GetComponent<LaserManager>().GenerateLasers();
+    }
+
     public void SetBlocId(int x, int y, GameObject bloc){
         grid[x, y] = bloc;
         ids[x, y] = suspended;
@@ -182,5 +182,21 @@ public class GridManager : MonoBehaviour
             return null;
         }
         return GetComponent<BlocManager>().FindBlocDataWithId(ids[x, y]);
+    }
+
+    public bool IsWin(){
+        for (int i = 0; i < gridWidth; i++){
+            for (int j = 0; j < gridWidth; j++){
+                if (grid[i, j] != null){
+                    //on test si le bloc a le script WinObject
+                    if (grid[i, j].GetComponent<WinObject>() != null){
+                        if(!grid[i, j].GetComponent<WinObject>().isWin){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

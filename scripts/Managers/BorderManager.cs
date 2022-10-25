@@ -56,4 +56,14 @@ public class BorderManager : MonoBehaviour{
     public bool IsBlocInBorder(Vector2 pos){
         return limitsTable[(int)pos.x,(int)pos.y];
     }
+
+    public void ToggleBorder(int x, int y){
+        if(limitsTable[x,y]){
+            limitsTable[x,y] = false;
+            tilemapRenderer.SetTile(new Vector3Int(x,-y,0), null);
+        }else{
+            limitsTable[x,y] = true;
+            tilemapRenderer.SetTile(new Vector3Int(x,-y,0), tile);
+        }
+    }
 }

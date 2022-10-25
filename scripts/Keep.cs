@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Keep : MonoBehaviour
 {
     string _levelCode;
+    bool sandBoxMode = false;
 
     public string LevelCode
     {
@@ -16,6 +17,18 @@ public class Keep : MonoBehaviour
         set
         {
             _levelCode = value;
+        }
+    }
+
+    public bool SandBoxMode
+    {
+        get
+        {
+            return sandBoxMode;
+        }
+        set
+        {
+            sandBoxMode = value;
         }
     }
 

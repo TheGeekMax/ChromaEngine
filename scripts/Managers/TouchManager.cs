@@ -12,6 +12,8 @@ public class TouchManager : MonoBehaviour
     GameObject choosenBloc;
     bool dontMove;
 
+    bool deleted = false;
+
     void Awake(){
         Input.multiTouchEnabled = false;
     }
@@ -22,6 +24,47 @@ public class TouchManager : MonoBehaviour
 
     // programme de detection de toucches
     void Update(){
+        SandboxManager sandboxManager = GetComponent<SandboxManager>();
+        if(sandboxManager.sandboxMode && sandboxManager.toolId == 1){
+            if(Input.touchCount > 0){
+                //données annexes
+                Touch touch = Input.GetTouch(0);
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                float x = Mathf.Ceil(touchPos.x)+(gridWidth/2)-1;
+                float y = (gridWidth/2)-Mathf.Ceil(touchPos.y);
+                Vector2 intTouchPos = new Vector2(Mathf.Clamp(x,0,gridWidth-1),Mathf.Clamp(y,0,gridWidth-1));
+
+                if(x < 0 || x >= gridWidth || y < 0 || y >= gridWidth){
+                    return;
+                }
+
+                if(touch.phase == TouchPhase.Ended){
+                    GetComponent<GridManager>().RemoveBloc((int)intTouchPos.x,(int)intTouchPos.y);
+                }
+            }
+            return;
+        }else if(sandboxManager.sandboxMode && sandboxManager.toolId == 2){
+            if(Input.touchCount > 0){
+                //données annexes
+                Touch touch = Input.GetTouch(0);
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                float x = Mathf.Ceil(touchPos.x)+(gridWidth/2)-1;
+                float y = (gridWidth/2)-Mathf.Ceil(touchPos.y);
+                Vector2 intTouchPos = new Vector2(Mathf.Clamp(x,0,gridWidth-1),Mathf.Clamp(y,0,gridWidth-1));
+
+                if(x < 0 || x >= gridWidth || y < 0 || y >= gridWidth){
+                    return;
+                }
+
+                if(touch.phase == TouchPhase.Ended){
+                    GetComponent<BorderManager>().ToggleBorder((int)intTouchPos.x,(int)intTouchPos.y);
+                }
+            }
+            return;
+        }
+
+
+
         if(Input.touchCount > 0){
             //données annexes
             Touch touch = Input.GetTouch(0);
@@ -30,7 +73,12 @@ public class TouchManager : MonoBehaviour
             float y = (gridWidth/2)-Mathf.Ceil(touchPos.y);
             Vector2 intTouchPos = new Vector2(Mathf.Clamp(x,0,gridWidth-1),Mathf.Clamp(y,0,gridWidth-1));
 
+            //test si click OOB
             if(touch.phase == TouchPhase.Began){
+                if(x < 0 || x >= gridWidth || y < 0 || y >= gridWidth){
+                    deleted = true;
+                    return;
+                }
                 //debut
                 beginTouchPosition = new Vector2Int((int)intTouchPos.x,(int)intTouchPos.y);
                 beginTouchPositionFloat = touchPos;
@@ -41,6 +89,9 @@ public class TouchManager : MonoBehaviour
                     dontMove = false;
                 }
             }else if(touch.phase == TouchPhase.Moved){
+                if(x < 0 || x >= gridWidth || y < 0 || y >= gridWidth){
+                    return;
+                }
                 //milieu
                 if((Vector2.Distance(beginTouchPositionFloat,touchPos) > 0.3f || type == 1) && !dontMove){
                     //on detecte un mouvement
@@ -53,6 +104,10 @@ public class TouchManager : MonoBehaviour
                     }
                 }
             }else if(touch.phase == TouchPhase.Ended ){
+                if(deleted){
+                    deleted = false;
+                    return;
+                }
                 //cas du release
                 int clampedX  = (int)Mathf.Clamp(intTouchPos.x,0,gridWidth-1);
                 int clampedY  = (int)Mathf.Clamp(intTouchPos.y,0,gridWidth-1);
