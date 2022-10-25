@@ -306,7 +306,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 5, y: 0, z: 5, w: 0}
+      border: {x: 7, y: 0, z: 5, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -327,7 +327,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 5, y: 0, z: 5, w: 0}
+      border: {x: 8, y: 0, z: 4, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1228,8 +1228,8 @@ TextureImporter:
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1249,8 +1249,8 @@ TextureImporter:
         y: 144
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1258,6 +1258,48 @@ TextureImporter:
       bones: []
       spriteID: df9f6dfc159389f4e9ede87c5f774585
       internalID: 846857355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gui
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 7, z: 7, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b8d750c9ca6b74d85aa93ff5b5ba79
+      internalID: 1226630808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_home
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e1c321eda206da4aa13815820cd79c0
+      internalID: -491150875
       vertices: []
       indices: 
       edges: []
@@ -1312,6 +1354,7 @@ TextureImporter:
       adder 1: 314445508
       non placeable: -1062788977
       unifier green: -64792350
+      tile_home: -491150875
       background v2: -1466834653
       gameSprites_8: 1727407023
       gameSprites_9: -733944296
@@ -1352,6 +1395,7 @@ TextureImporter:
       and 1: -492285930
       gameSprites_39: 1839199691
       buttonremove: 2001680647
+      gui: 1226630808
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

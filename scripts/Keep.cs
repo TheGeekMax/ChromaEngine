@@ -8,6 +8,8 @@ public class Keep : MonoBehaviour
     string _levelCode;
     bool sandBoxMode = false;
 
+    static GameObject instance;
+
     public string LevelCode
     {
         get
@@ -33,7 +35,12 @@ public class Keep : MonoBehaviour
     }
 
     void Awake(){
-        DontDestroyOnLoad(gameObject);
+        if(instance == null){
+            instance = gameObject;
+            DontDestroyOnLoad(gameObject);
+        }else{
+            Destroy(gameObject);
+        }
     }
 
     public void Play(){
