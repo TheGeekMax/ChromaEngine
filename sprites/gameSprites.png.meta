@@ -1292,7 +1292,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1300,6 +1300,111 @@ TextureImporter:
       bones: []
       spriteID: 0e1c321eda206da4aa13815820cd79c0
       internalID: -491150875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aeb38792b611054dba69850eafb608e
+      internalID: 1905743660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: particle1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 188
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c41296398e43a67459ccb4b49205221b
+      internalID: -379038252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: particle2
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 188
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e6f9b64e5760a47b727eba74e4147b
+      internalID: -733800563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: particle3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 184
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45c32d060f8dd884ba64834ead7f3b4f
+      internalID: 227279641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: particle4
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 184
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f97da540ce8da945baf1f0baeafa64d
+      internalID: -1530956692
       vertices: []
       indices: 
       edges: []
@@ -1318,84 +1423,89 @@ TextureImporter:
       buttonLock: -1693497203
       gameSprites_5: 1318220533
       adder 2: -640640377
-      border b: -1267477750
-      gameSprites_32: 371345690
       adder 0: 810827872
-      gameSprites_48: 579809682
       mirror 1: -2053516575
-      gameSprites_7: -1139258512
       mixer 2: -1653265708
-      gameSprites_40: -1292946613
-      background v1: 1142581820
-      gameSprites_23: -1924122966
+      border br: 192755794
       button down: 1375238506
       border tr: -341220252
-      adder 3: -1163712662
       placeable: -1605509574
-      gameSprites_3: -2043143610
-      border br: 192755794
-      gameSprites_31: -1560045361
-      or 3: 857728347
-      gameSprites_14: 1864427885
-      gameSprites_24: -1117309336
-      gameSprites_49: 1720608868
-      background: 436131337
-      and 3: 1881307539
       gameSprites_11: -1745708920
-      light_off: 1015367895
-      gameSprites_13: -586926140
+      gameSprites_14: 1864427885
+      gameSprites_31: -1560045361
       border t: 1137361248
+      and 3: 1881307539
+      background: 436131337
+      gameSprites_13: -586926140
       background v3: 310932447
       gameSprites_25: -1181437344
-      led_light: -759707113
-      buttonAdd: 1953616616
       gameSprites_10: -608826374
       gameSprites_4: 455051174
       adder 1: 314445508
-      non placeable: -1062788977
       unifier green: -64792350
       tile_home: -491150875
-      background v2: -1466834653
       gameSprites_8: 1727407023
       gameSprites_9: -733944296
-      gameSprites_47: 760347144
-      splitter: -1877515234
       or 1: 874358265
       gameSprites_53: 2003008329
-      and 0: 106080844
-      up arrow: 846840230
+      light_on: -994779593
       and 2: -49108468
       gameSprites_6: 1128229220
       border l: -22446431
       down arrow: -1650554250
-      light_on: -994779593
       laser 2: -260802604
       border tl: -1118629861
       border r: -1517617603
       border bl: 664708439
-      unifier_blue: 846857355
+      particle4: -1530956692
       laser 1: 1930750225
-      laser 0: 562943068
       laser 3: 214320787
-      gameSprites_2: 743078405
       or 2: -623830026
+      gameSprites_2: 743078405
       led_ bloc: 668762285
       or 0: -303394766
       gameSprites_41: 733344939
-      mirror 0: 1258386523
+      ballon: 1905743660
       bloc: 1569284257
       mixer 3: 2005858492
-      unifier_red: 734632283
       mixer 0: 1475831686
-      gameSprites_33: 834472337
-      lock: 1638868675
       gameSprites_12: -1453134098
       mixer 1: -155709495
       button up: -1636051888
       and 1: -492285930
+      border b: -1267477750
+      gameSprites_32: 371345690
+      gameSprites_7: -1139258512
+      gameSprites_48: 579809682
+      particle1: -379038252
+      led_light: -759707113
+      gameSprites_40: -1292946613
+      background v1: 1142581820
+      gameSprites_23: -1924122966
+      adder 3: -1163712662
+      gameSprites_3: -2043143610
+      or 3: 857728347
+      gameSprites_24: -1117309336
+      gameSprites_49: 1720608868
+      particle3: 227279641
+      light_off: 1015367895
+      buttonAdd: 1953616616
+      non placeable: -1062788977
+      background v2: -1466834653
+      gameSprites_47: 760347144
+      particle2: -733800563
+      splitter: -1877515234
+      up arrow: 846840230
+      and 0: 106080844
+      unifier_blue: 846857355
+      laser 0: 562943068
+      mirror 0: 1258386523
+      lock: 1638868675
+      gui: 1226630808
+      unifier_red: 734632283
+      gameSprites_33: 834472337
       gameSprites_39: 1839199691
       buttonremove: 2001680647
-      gui: 1226630808
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

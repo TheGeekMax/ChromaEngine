@@ -21,6 +21,12 @@ public class LaserManager : MonoBehaviour
     GameObject[,] bottomLaser;
     GameObject[,] leftLaser;
 
+    public static LaserManager instance;
+    
+    void Awake(){
+        instance = this;
+    }
+
     public void Init(){
         //get grid width
         int gridWidth = GetComponent<GridManager>().gridWidth;
@@ -46,10 +52,10 @@ public class LaserManager : MonoBehaviour
         else if ((beginOr == 1 && endOr == 0) || (beginOr == 2 && endOr == 3)){
             prefab = corner3to0Laser;
         }
-        else if ((beginOr == 0 && endOr == 2) || (beginOr == 2 && endOr == 0)){
+        else if ((beginOr == 0 && endOr == 2) || (beginOr == 2 && endOr == 0) || (beginOr == 0 && endOr == 0) || (beginOr == 2 && endOr == 2)){
             prefab = verticalLaser;
         }
-        else if ((beginOr == 1 && endOr == 3) || (beginOr == 3 && endOr == 1)){
+        else if ((beginOr == 1 && endOr == 3) || (beginOr == 3 && endOr == 1) || (beginOr == 1 && endOr == 1) || (beginOr == 3 && endOr == 3)){
             prefab = horizontalLaser;
         }
         else{

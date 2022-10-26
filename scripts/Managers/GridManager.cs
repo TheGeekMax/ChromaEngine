@@ -15,6 +15,14 @@ public class GridManager : MonoBehaviour
 
     public GameObject Parent;
 
+    public static GridManager instance;
+
+    public GameObject baloonParticle;
+
+    void Awake(){
+        instance = this;
+    }
+
     public void Init(){
         switch (sizeData)
         {
@@ -96,8 +104,8 @@ public class GridManager : MonoBehaviour
     public void AddBlocToNearest(string blocstr){
         for(int i = 0; i < gridWidth; i++){
             for(int j = 0; j < gridWidth; j++){
-                if(grid[i,j] == null){
-                    AddBloc(blocstr, i, j, (int)Random.Range(0, 4));
+                if(grid[j,i] == null){
+                    AddBloc(blocstr, j, i, 0);
                     return;
                 }
             }
@@ -168,6 +176,38 @@ public class GridManager : MonoBehaviour
         grid[x, y] = null;
         ids[x, y] = -1;
         GetComponent<LaserManager>().GenerateLasers();
+    }
+
+    public void RemoveBloc(GameObject obj){
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridWidth; j++)
+            {
+                if (grid[i, j] == obj){
+                    RemoveBloc(i, j);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void RemoveblocWithExplosion(GameObject obj, Vector3 color){
+        for (int i = 0; i < gridWidth; i++){
+            for (int j = 0; j < gridWidth; j++){
+                if (grid[i, j] == obj){
+                    RemoveBloc(i, j);
+                    //on instancie l'explosion au centre du bloc
+                    Vector3 pos = new Vector3(i - gridWidth / 2 + .5f, gridWidth / 2 - j-.5f, 0);
+                    GameObject newObj = Instantiate(baloonParticle, pos, Quaternion.identity);
+                    //on change la couleur du particle system
+                    newObj.GetComponent<ParticleSystem>().startColor = new Color(color.x, color.y, color.z,1);
+                    //puis on run l'animation
+                    newObj.GetComponent<ParticleSystem>().Play();
+                    return;
+                }
+            }
+        }
+
     }
 
     public void SetBlocId(int x, int y, GameObject bloc){

@@ -27,6 +27,12 @@ public class SandboxManager : MonoBehaviour
 
     int currentId = 0;
 
+    public static SandboxManager instance;
+
+    void Awake(){
+        instance = this;
+    }
+
     void Start(){
         UpdateId(0);
     }
