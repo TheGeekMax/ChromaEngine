@@ -6,6 +6,17 @@ public class KeepManager : MonoBehaviour{
     [HideInInspector]
     public GameObject keepObject;
 
+    public static KeepManager instance;
+
+    void Awake(){
+        if(instance == null){
+            instance = this;
+        }
+        else{
+            Destroy(gameObject);
+        }
+    }
+
     void Start(){
         keepObject = GameObject.Find("Keep");    
     }

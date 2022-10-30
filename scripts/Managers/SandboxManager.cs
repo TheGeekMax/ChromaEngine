@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SandboxManager : MonoBehaviour
-{
+public class SandboxManager : MonoBehaviour{
     public bool sandboxMode = false;
     public int toolId = 0;
     // 0 - add blocs
@@ -27,6 +26,17 @@ public class SandboxManager : MonoBehaviour
 
     int currentId = 0;
 
+    [Header("Gui")]
+    public bool open = true;
+    public GameObject gui;
+    public GameObject laserGUI;   // 0
+    public GameObject blockGUI;   // 1
+    public GameObject lightGUI;   // 2
+    public GameObject balloonGUI; // 3
+    public GameObject prefabButton;
+
+    int currentCategory = 0;
+
     public static SandboxManager instance;
 
     void Awake(){
@@ -34,7 +44,30 @@ public class SandboxManager : MonoBehaviour
     }
 
     void Start(){
-        UpdateId(0);
+        ToggleGui();
+        UpdateTab();
+        //on ajoute les boutons
+        for(int i = 0; i < BlocManager.instance.blocs.Count; i++){
+            GameObject go;
+            switch(BlocManager.instance.blocs[i].category){
+                case BlocManager.Category.Lasers:
+                    go = Instantiate(prefabButton, laserGUI.transform);
+                    break;
+                case BlocManager.Category.Blocks:
+                    go = Instantiate(prefabButton, blockGUI.transform);
+                    break;
+                case BlocManager.Category.Lights:
+                    go = Instantiate(prefabButton, lightGUI.transform);
+                    break;
+                case BlocManager.Category.Balloons:
+                    go = Instantiate(prefabButton, balloonGUI.transform);
+                    break;
+                default:
+                    go = Instantiate(prefabButton, laserGUI.transform);
+                    break;
+            }
+            go.GetComponent<ButtonSandbox>().UpdateData(i);
+        }
     }
 
     public void UpdateSandboxMod(){
@@ -55,6 +88,7 @@ public class SandboxManager : MonoBehaviour
         }else if(toolId == 1){
             toolButton.GetComponent<Image>().sprite = removeBlocSprite;
             addPanel.SetActive(false);
+            gui.SetActive(false);
         }else if(toolId == 2){
             toolButton.GetComponent<Image>().sprite = addBorderSprite;
             addPanel.SetActive(false);
@@ -66,15 +100,41 @@ public class SandboxManager : MonoBehaviour
         UpdateSprite();
     }
 
-    public void UpdateId(int id){
-        if(currentId+id >= 0 && currentId+id < GetComponent<BlocManager>().GetLength()){
-            currentId += id;
-            label.GetComponent<TextMeshProUGUI>().text = GetComponent<BlocManager>().FindBlocDataWithId(currentId).name;
+    public void SetId(int id){
+        currentCategory = id;
+        UpdateTab();
+    }
+
+    public void UpdateTab(){
+        Debug.Log("UpdateTab");
+        laserGUI.SetActive(false);
+        blockGUI.SetActive(false);
+        lightGUI.SetActive(false);
+        balloonGUI.SetActive(false);
+        if(currentCategory == 0){
+            laserGUI.SetActive(true);
+        }else if(currentCategory == 1){
+            blockGUI.SetActive(true);
+        }else if(currentCategory == 2){
+            lightGUI.SetActive(true);
+        }else if(currentCategory == 3){
+            balloonGUI.SetActive(true);
         }
+    }
+
+    public void Select(int id){
+        currentId = id;
+        label.GetComponent<TextMeshProUGUI>().text = BlocManager.instance.blocs[id].name;
+    }
+
+    public void ToggleGui(){
+        open = !open;
+        gui.SetActive(open);
     }
 
     public void PlaceBlock(){
         //on place le block
         GetComponent<GridManager>().AddBlocToNearest(GetComponent<BlocManager>().FindBlocDataWithId(currentId).name);
+        GetComponent<LaserManager>().GenerateLasers();
     }
 }

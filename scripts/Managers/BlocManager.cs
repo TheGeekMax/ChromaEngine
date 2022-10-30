@@ -4,9 +4,25 @@ using UnityEngine;
 //i want to use PrefabUtility
 using UnityEditor;
 
-public class BlocManager : MonoBehaviour
-{
+public class BlocManager : MonoBehaviour{
     public List<BlocData> blocs;
+
+    public static BlocManager instance;
+
+    public enum Category{
+        Lasers,
+        Blocks,
+        Lights,
+        Balloons
+    }
+
+    void Awake(){
+        if(instance == null){
+            instance = this;
+            return;
+        }
+        Destroy(gameObject);
+    }
 
     public GameObject FindBloc(string name){
         foreach(BlocData bloc in blocs){

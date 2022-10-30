@@ -6,4 +6,5 @@ using UnityEngine;
 public class BlocData{
     public string name;
     public GameObject prefab;
+    public BlocManager.Category category;
 }

@@ -8,6 +8,7 @@ public class Laser : MonoBehaviour
 {
     public Vector3 color;
     public GameObject light;
+    public int layerOrder;
     public float intensity;
     public float fallOff;
 
@@ -16,6 +17,11 @@ public class Laser : MonoBehaviour
 
     public void SetColor(int r, int g, int b){
         this.color = new Vector3(r,g,b);
+        UpdateSprite();
+    }
+
+    public void SetOrder(int order){
+        this.layerOrder = order;
         UpdateSprite();
     }
 

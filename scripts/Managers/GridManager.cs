@@ -196,6 +196,7 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < gridWidth; j++){
                 if (grid[i, j] == obj){
                     RemoveBloc(i, j);
+                    AudioManager.instance.Play(0);
                     //on instancie l'explosion au centre du bloc
                     Vector3 pos = new Vector3(i - gridWidth / 2 + .5f, gridWidth / 2 - j-.5f, 0);
                     GameObject newObj = Instantiate(baloonParticle, pos, Quaternion.identity);

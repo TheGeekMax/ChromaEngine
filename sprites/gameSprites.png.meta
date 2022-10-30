@@ -306,7 +306,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 7, y: 0, z: 5, w: 0}
+      border: {x: 3, y: 6, z: 3, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -327,7 +327,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 8, y: 0, z: 4, w: 0}
+      border: {x: 3, y: 6, z: 3, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1334,7 +1334,7 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1355,7 +1355,7 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1376,7 +1376,7 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1397,7 +1397,7 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1405,6 +1405,195 @@ TextureImporter:
       bones: []
       spriteID: 3f97da540ce8da945baf1f0baeafa64d
       internalID: -1530956692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sandbox
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0177529d983c77f4a94f8a8a4962df36
+      internalID: 1088543239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: not done
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82a1ab57771ea7429e513bf438a3227
+      internalID: -1971259466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: done
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49bc6d6406e07f744ada5669925e555d
+      internalID: 1924683097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tab
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 0, z: 7, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c7fe091d12f4e4db9b4bffb300d97f
+      internalID: -1627326715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tab_close
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 0, z: 7, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5950241b1722e43949d5b8b22c1a1f
+      internalID: -1882940110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blocs
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 136
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0fb579916bc73147a6d605a6396a332
+      internalID: 1316288022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lasertab
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 128
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d04685038e3d3c84b896abb7e293a06b
+      internalID: -892607712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon tab
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9523337b34b7541bec8bf67422bca9
+      internalID: -2035583070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light tab
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 136
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 628b691b8072962409f8d5f2e32f9302
+      internalID: 1057865752
       vertices: []
       indices: 
       edges: []
@@ -1453,6 +1642,7 @@ TextureImporter:
       gameSprites_6: 1128229220
       border l: -22446431
       down arrow: -1650554250
+      tab: -1627326715
       laser 2: -260802604
       border tl: -1118629861
       border r: -1517617603
@@ -1462,6 +1652,7 @@ TextureImporter:
       laser 3: 214320787
       or 2: -623830026
       gameSprites_2: 743078405
+      done: 1924683097
       led_ bloc: 668762285
       or 0: -303394766
       gameSprites_41: 733344939
@@ -1472,6 +1663,7 @@ TextureImporter:
       gameSprites_12: -1453134098
       mixer 1: -155709495
       button up: -1636051888
+      light tab: 1057865752
       and 1: -492285930
       border b: -1267477750
       gameSprites_32: 371345690
@@ -1485,13 +1677,16 @@ TextureImporter:
       adder 3: -1163712662
       gameSprites_3: -2043143610
       or 3: 857728347
+      tab_close: -1882940110
       gameSprites_24: -1117309336
       gameSprites_49: 1720608868
       particle3: 227279641
       light_off: 1015367895
       buttonAdd: 1953616616
+      blocs: 1316288022
       non placeable: -1062788977
       background v2: -1466834653
+      lasertab: -892607712
       gameSprites_47: 760347144
       particle2: -733800563
       splitter: -1877515234
@@ -1500,10 +1695,13 @@ TextureImporter:
       unifier_blue: 846857355
       laser 0: 562943068
       mirror 0: 1258386523
+      sandbox: 1088543239
       lock: 1638868675
       gui: 1226630808
       unifier_red: 734632283
+      ballon tab: -2035583070
       gameSprites_33: 834472337
+      not done: -1971259466
       gameSprites_39: 1839199691
       buttonremove: 2001680647
   spritePackingTag: 

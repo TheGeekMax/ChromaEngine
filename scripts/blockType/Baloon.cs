@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Baloon : Bloc{
     bool cooldown = false;
-    int cooldownTime = 40;
+    int cooldownTime = 20;
 
     void Awake(){
         //on met le sprite en noir

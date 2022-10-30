@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColouredBallon : Bloc{
     bool cooldown = false;
-    int cooldownTime = 40;
+    int cooldownTime = 20;
 
     public Vector3 color;
 

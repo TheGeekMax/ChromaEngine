@@ -24,6 +24,9 @@ public class TouchManager : MonoBehaviour
 
     // programme de detection de toucches
     void Update(){
+        if(SandboxManager.instance.open){
+            return;
+        }
         SandboxManager sandboxManager = GetComponent<SandboxManager>();
         if(sandboxManager.sandboxMode && sandboxManager.toolId == 1){
             if(Input.touchCount > 0){
@@ -80,6 +83,7 @@ public class TouchManager : MonoBehaviour
                     return;
                 }
                 //debut
+                AudioManager.instance.Play(1);
                 beginTouchPosition = new Vector2Int((int)intTouchPos.x,(int)intTouchPos.y);
                 beginTouchPositionFloat = touchPos;
                 type = 0;
@@ -108,12 +112,15 @@ public class TouchManager : MonoBehaviour
                     deleted = false;
                     return;
                 }
+
+                
                 //cas du release
                 int clampedX  = (int)Mathf.Clamp(intTouchPos.x,0,gridWidth-1);
                 int clampedY  = (int)Mathf.Clamp(intTouchPos.y,0,gridWidth-1);
                 if(type == 0){
                     GetComponent<GridManager>().RotateBloc(clampedX, clampedY);
                 }else if(!dontMove){
+                    AudioManager.instance.Play(2);
                     if(GetComponent<GridManager>().GetBlocObject(clampedX,clampedY) == null && GetComponent<BorderManager>().IsBlocInBorder(new Vector2(clampedX,clampedY))){
                         GetComponent<GridManager>().SetBlocId(clampedX, clampedY,choosenBloc);
                         choosenBloc.transform.position = new Vector3(Mathf.Ceil(Mathf.Clamp(touchPos.x,-gridWidth/2+1,gridWidth/2))-1, Mathf.Ceil(Mathf.Clamp(touchPos.y,-gridWidth/2+1,gridWidth/2)), 0);

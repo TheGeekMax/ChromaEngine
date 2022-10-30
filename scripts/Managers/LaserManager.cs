@@ -37,7 +37,7 @@ public class LaserManager : MonoBehaviour
         leftLaser = new GameObject[gridWidth, gridWidth];
     }
 
-    public void AddLaser(int beginOr,int endOr,int x, int y,Vector3 color){
+    public void AddLaser(int beginOr,int endOr,int x, int y,Vector3 color,int order){
         //etape 1 : obtention du bon prefab en fonction de l'orientation
         GameObject prefab = null;
              if ((beginOr == 2 && endOr == 1) || (beginOr == 3 && endOr == 0)){
@@ -67,12 +67,13 @@ public class LaserManager : MonoBehaviour
         GameObject newLaser = Instantiate(prefab, new Vector3((x-GetComponent<GridManager>().gridWidth/2), (GetComponent<GridManager>().gridWidth/2)-y, 0), Quaternion.identity);
         newLaser.transform.parent = parent.transform;
         newLaser.GetComponent<Laser>().SetColor((int)color.x, (int)color.y, (int)color.z);
+        newLaser.GetComponent<Laser>().SetOrder(order);
+        newLaser.GetComponent<SpriteRenderer>().sortingOrder = order;
 
 
         //etape 3 : ajout du prefab au tableau correspondant
         if (beginOr == 0){
             //definie sa priorité a 0.1
-            newLaser.GetComponent<SpriteRenderer>().sortingOrder = 1;
             if(topLaser[x,y] != null){
                 Destroy(topLaser[x,y]);
             }
@@ -80,7 +81,6 @@ public class LaserManager : MonoBehaviour
         }
         else if (beginOr == 1){
             //definie sa priorité a 0.2
-            newLaser.GetComponent<SpriteRenderer>().sortingOrder = 2;
             if(rightLaser[x,y] != null){
                 Destroy(rightLaser[x,y]);
             }
@@ -88,7 +88,7 @@ public class LaserManager : MonoBehaviour
         }
         else if (beginOr == 2){
             //definie sa priorité a 0.3
-            newLaser.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            
             if(bottomLaser[x,y] != null){
                 Destroy(bottomLaser[x,y]);
             }
@@ -96,7 +96,6 @@ public class LaserManager : MonoBehaviour
         }
         else if (beginOr == 3){
             //definie sa priorité a 0.4
-            newLaser.GetComponent<SpriteRenderer>().sortingOrder = 4;
             if(leftLaser[x,y] != null){
                 Destroy(leftLaser[x,y]);
             }
@@ -137,6 +136,8 @@ public class LaserManager : MonoBehaviour
         rightLaser = new GameObject[gw, gw];
         bottomLaser = new GameObject[gw, gw];
         leftLaser = new GameObject[gw, gw];
+
+        GeneratorData.layerOrderOffset = 6;
     }
 
     public void GenerateLasers(){
@@ -175,19 +176,20 @@ public class LaserManager : MonoBehaviour
         }
 
         while(generatorList.Count > 0){
-            //etape 1 on suprime les GeneratorData inutiles (OOB)
+            //etape 1 on suprime les GeneratorData inutiles (OOB,ou dans une case deja passé)
             for (int i = 0; i < generatorList.Count; i++){
-                if (generatorList[i].position.x < 0 || generatorList[i].position.x >= gridManager.gridWidth || generatorList[i].position.y < 0 || generatorList[i].position.y >= gridManager.gridWidth){
+                if (generatorList[i].position.x < 0 || generatorList[i].position.x >= gridManager.gridWidth || generatorList[i].position.y < 0 || generatorList[i].position.y >= gridManager.gridWidth || generatorList[i].Count(generatorList[i].position) >= 2){
                     generatorList.RemoveAt(i);
                     i--;
                 }
             }
 
+
             List<GeneratorData> added = new List<GeneratorData>();
             for (int i = 0; i < generatorList.Count; i++){
                 //etape 2 on place le laser a l'emplacement du node si vide
                 if (gridManager.IsEmpty((int)generatorList[i].position.x, (int)generatorList[i].position.y)){
-                    AddLaser(generatorList[i].orientation, (generatorList[i].orientation+2)%4, (int)generatorList[i].position.x, (int)generatorList[i].position.y, generatorList[i].color);
+                    AddLaser(generatorList[i].orientation, (generatorList[i].orientation+2)%4, (int)generatorList[i].position.x, (int)generatorList[i].position.y, generatorList[i].color,generatorList[i].layerOrder);
                 }else{ //etape 3 si non vide on execute la fonction de l'objet
 
                     //execute la fonction de l'objet
@@ -197,7 +199,7 @@ public class LaserManager : MonoBehaviour
                         
                         //on actualise la valeur de la node
                         if(new_inp.show){
-                            AddLaser(generatorList[i].orientation, new_inp.orientation, (int)generatorList[i].position.x, (int)generatorList[i].position.y, new Vector3(new_inp.r, new_inp.g, new_inp.b));
+                        AddLaser(generatorList[i].orientation, new_inp.orientation, (int)generatorList[i].position.x, (int)generatorList[i].position.y, new Vector3(new_inp.r, new_inp.g, new_inp.b),generatorList[i].layerOrder);
                         }
 
                         generatorList[i].orientation = new_inp.orientation;
@@ -235,6 +237,7 @@ public class LaserManager : MonoBehaviour
 
             //etape 4 on on avance les nodes d'une case
             for (int i = 0; i < generatorList.Count; i++){
+                generatorList[i].path.Add(generatorList[i].position);
                 switch(generatorList[i].orientation){
                     case 0:
                         generatorList[i].position += new Vector2(0, -1);
@@ -249,6 +252,11 @@ public class LaserManager : MonoBehaviour
                         generatorList[i].position += new Vector2(-1, 0);
                         break;
                 }
+            }
+
+            //etape 5 on decremente la durée de vie des nodes
+            for (int i = 0; i < generatorList.Count; i++){
+                generatorList[i].lifespan--;
             }
         }
         GetComponent<WinManager>().IsWin();
