@@ -1,0 +1,61 @@
+{
+    "cities":["Tutorial City","Test City","SandBox City"],
+    "levels":[
+        {
+            "name":"Niveau test 1",
+            "description":"",
+            "levelCode":"sB7FA134G5J5P-33",
+            "sandbox":false,
+            "city":1
+        },
+        {
+            "name":"Niveau test 2",
+            "description":"",
+            "levelCode":"mEFDDFED9F0015EA6C7J7P2i-33333",
+            "sandbox":false,
+            "city":1
+        },
+        {
+            "name":"Win 1",
+            "description":"",
+            "levelCode":"sFFE1520B6J8R-34",
+            "sandbox":false,
+            "city":0
+        },
+        {
+            "name":"Test Ballons",
+            "description":"",
+            "levelCode":"lFFFFFDFF0F0FFFFF24650C6D1K6L6S6T7g-OMPNLQ333",
+            "sandbox":false,
+            "city":1
+        },
+        {
+            "name":"Niveau hard 1",
+            "description":"",
+            "levelCode":"l000073F2F1F3F3848007A81F9G2NCO7QDW7Z7dBe7i7lEm-444443443",
+            "sandbox":false,
+            "city":1
+        },
+        {
+            "name":"Sandbox sm",
+            "description":"",
+            "levelCode":"sFFFF-",
+            "sandbox":true,
+            "city":2
+        },
+        {
+            "name":"Sandbox me",
+            "description":"",
+            "levelCode":"mFFFFFFFFF-",
+            "sandbox":true,
+            "city":2
+        },
+        {
+            "name":"Sandbox lg",
+            "description":"",
+            "levelCode":"lFFFFFFFFFFFFFFFF-",
+            "sandbox":true,
+            "city":2
+        }
+    ]
+}

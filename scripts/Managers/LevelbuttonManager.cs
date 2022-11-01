@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum LevelButtonState{
-    Unlocked,
-    Completed,
-    SandBox
-}
-
 public class LevelbuttonManager : MonoBehaviour{
     // Start is called before the first frame update
     public Sprite unlockedSprite;
@@ -16,9 +10,22 @@ public class LevelbuttonManager : MonoBehaviour{
     public Sprite sandBoxSprite;
 
     public GameObject levelButtonPrefab;
+    public GameObject cityButtonPrefab;
     public GameObject parentButton;
 
+    [Header("buttons")]
+    public GameObject backButton;
+
     public static LevelbuttonManager instance;
+
+    public enum LevelButtonState{
+        Unlocked,
+        Completed,
+        SandBox
+    }
+
+    List<string> Cities;
+    Dictionary<string, LevelData> levelDataDict;
 
 
     void Awake(){
@@ -28,21 +35,95 @@ public class LevelbuttonManager : MonoBehaviour{
         else{
             Destroy(gameObject);
         }
+
+        levelDataDict = new Dictionary<string, LevelData>();
+        Cities = new List<string>();
     }
 
     void Start(){
-        AddLevelButton("Niveau test 1","sB7FA134G5J5P-33",LevelButtonState.Unlocked);
-        AddLevelButton("Niveau test 2","mEFDDFED9F0015EA6C7J7P2i-33333",LevelButtonState.Completed);
-        AddLevelButton("Win 1","sFFE1520B6J8R-34",LevelButtonState.Unlocked);
-        AddLevelButton("Test Ballons","lFFFFFDFF0F0FFFFF24650C6D1K6L6S6T7g-OMPNLQ333",LevelButtonState.Completed);
-        AddLevelButton("Niveau hard 1","l000073F2F1F3F3848007A81F9G2NCO7QDW7Z7dBe7i7lEm-444443443",LevelButtonState.Unlocked);
-        AddLevelButton("Sandbox sm","sFFFF-",LevelButtonState.SandBox);
-        AddLevelButton("Sandbox me","mFFFFFFFFF-",LevelButtonState.SandBox);
-        AddLevelButton("Sandbox lg","lFFFFFFFFFFFFFFFF-",LevelButtonState.SandBox);
+        LevelLoaderManager.instance.LoadData();
+        /*
+        //add cities
+        AddCity("Tutorial City");
+        AddCity("Test City");
+        AddCity("SandBox City");
+
+        //add levels
+        AddLevelUnlocked("Niveau test 1","Test City","sB7FA134G5J5P-33");
+        AddLevelCompleted("Niveau test 2","Test City","mEFDDFED9F0015EA6C7J7P2i-33333");
+        AddLevelUnlocked("Win 1","Test City","sFFE1520B6J8R-34");
+        AddLevelCompleted("Test Ballons","Test City","lFFFFFDFF0F0FFFFF24650C6D1K6L6S6T7g-OMPNLQ333");
+        AddLevelUnlocked("Niveau hard 1","Test City","l000073F2F1F3F3848007A81F9G2NCO7QDW7Z7dBe7i7lEm-444443443");
+        AddLevelSandBox("Sandbox sm","SandBox City","sFFFF-");
+        AddLevelSandBox("Sandbox me","SandBox City","mFFFFFFFFF-");
+        AddLevelSandBox("Sandbox lg","SandBox City","lFFFFFFFFFFFFFFFF-");
+
+        ShowCities();
+        */
     }
 
-    public void AddLevelButton(string levelName, string levelCode, LevelButtonState state){
-        GameObject levelButton = Instantiate(levelButtonPrefab,parentButton.transform);
-        levelButton.GetComponent<ButtonData>().UpdateData(levelName, levelCode,state);
+    // Onclick functions
+    public void CityOnClick(string cityName){
+        Debug.Log("CityOnClick: " + cityName);
+        ShowLevels(cityName);
+    }
+
+    public void Back(){
+        ShowCities();
+    }
+
+    //fonctions d'affichages boutons 
+    void ResetButtons(){
+        foreach(Transform child in parentButton.transform){
+            Destroy(child.gameObject);
+        }
+    }
+
+    public void ShowCities(){
+        ResetButtons();
+        backButton.SetActive(false);
+        foreach(string cityName in Cities){
+            GameObject cityButton = Instantiate(cityButtonPrefab, parentButton.transform);
+            cityButton.GetComponent<CityButton>().SetName(cityName);
+        }
+    }
+
+    void ShowLevels(string cityName){
+        ResetButtons();
+        backButton.SetActive(true);
+        foreach(KeyValuePair<string, LevelData> levelData in levelDataDict){
+            //Debug.Log(levelData.Key + " " + levelData.Value.cityName);
+            if(levelData.Value.cityName == cityName){
+                GameObject levelButton = Instantiate(levelButtonPrefab, parentButton.transform);
+                levelButton.GetComponent<ButtonData>().UpdateData(levelData.Value.levelName, levelData.Value.levelCode, levelData.Value.state);
+            }
+        }
+    }
+
+
+    //fonction d'ajout backend
+
+    public void AddCity(string cityName){
+        if(!Cities.Contains(cityName)){
+            Cities.Add(cityName);
+        }
+    }
+
+    public void AddLevelUnlocked(string levelName, string city, string levelCode){
+        if(!levelDataDict.ContainsKey(levelName)){
+            levelDataDict.Add(levelName, LevelData.DefaultLevel(levelName, city,levelCode));
+        }
+    }
+
+    public void AddLevelCompleted(string levelName, string city,string levelCode){
+        if(!levelDataDict.ContainsKey(levelName)){
+            levelDataDict.Add(levelName, LevelData.DefaultCompleted(levelName, city, levelCode));
+        }
+    }
+
+    public void AddLevelSandBox(string levelName, string city, string levelCode){
+        if(!levelDataDict.ContainsKey(levelName)){
+            levelDataDict.Add(levelName, LevelData.DefaultSandBox(levelName, city, levelCode));
+        }
     }
 }

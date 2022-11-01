@@ -24,7 +24,7 @@ public class ImportManager : MonoBehaviour
     }
 
     void Update(){
-        if(!entered){
+        if(!SandboxManager.instance.sandboxMode){
             return;
         }
         //pas de code mis au debut, chaque tick, on creer le code du niveau et on le met dans levelCode
