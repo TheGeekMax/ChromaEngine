@@ -7,6 +7,7 @@ public class Keep : MonoBehaviour
 {
     string _levelCode;
     bool sandBoxMode = false;
+    string _name = "Level Name";
 
     static GameObject instance;
 
@@ -31,6 +32,18 @@ public class Keep : MonoBehaviour
         set
         {
             sandBoxMode = value;
+        }
+    }
+
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+        set
+        {
+            _name = value;
         }
     }
 

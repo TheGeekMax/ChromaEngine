@@ -36,6 +36,7 @@ public class ButtonData : MonoBehaviour{
 
     public void Play(){
         KeepManager.instance.SetSandboxMode(sandbox);
+        KeepManager.instance.SetName(levelName);
         KeepManager.instance.Play(levelCode);
     }
 }

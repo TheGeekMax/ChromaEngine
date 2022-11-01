@@ -24,11 +24,10 @@ public class SandboxManager : MonoBehaviour{
 
     public GameObject label;
 
-    int currentId = 0;
+    public int currentId = 0;
 
     [Header("Gui")]
     public bool open = true;
-    public GameObject gui;
     public GameObject laserGUI;   // 0
     public GameObject blockGUI;   // 1
     public GameObject lightGUI;   // 2
@@ -36,6 +35,14 @@ public class SandboxManager : MonoBehaviour{
     public GameObject prefabButton;
 
     int currentCategory = 0;
+
+    [Header("Buttons sprites")]
+    public Sprite tabOn;
+    public Sprite tabOff;
+    public GameObject laserButton;
+    public GameObject blockButton;
+    public GameObject lightButton;
+    public GameObject balloonButton;
 
     public static SandboxManager instance;
 
@@ -88,7 +95,7 @@ public class SandboxManager : MonoBehaviour{
         }else if(toolId == 1){
             toolButton.GetComponent<Image>().sprite = removeBlocSprite;
             addPanel.SetActive(false);
-            gui.SetActive(false);
+            GuiManager.instance.Close();
         }else if(toolId == 2){
             toolButton.GetComponent<Image>().sprite = addBorderSprite;
             addPanel.SetActive(false);
@@ -111,14 +118,22 @@ public class SandboxManager : MonoBehaviour{
         blockGUI.SetActive(false);
         lightGUI.SetActive(false);
         balloonGUI.SetActive(false);
+        laserButton.GetComponent<Image>().sprite = tabOff;
+        blockButton.GetComponent<Image>().sprite = tabOff;
+        lightButton.GetComponent<Image>().sprite = tabOff;
+        balloonButton.GetComponent<Image>().sprite = tabOff;
         if(currentCategory == 0){
             laserGUI.SetActive(true);
+            laserButton.GetComponent<Image>().sprite = tabOn;
         }else if(currentCategory == 1){
             blockGUI.SetActive(true);
+            blockButton.GetComponent<Image>().sprite = tabOn;
         }else if(currentCategory == 2){
             lightGUI.SetActive(true);
+            lightButton.GetComponent<Image>().sprite = tabOn;
         }else if(currentCategory == 3){
             balloonGUI.SetActive(true);
+            balloonButton.GetComponent<Image>().sprite = tabOn;
         }
     }
 
@@ -129,7 +144,11 @@ public class SandboxManager : MonoBehaviour{
 
     public void ToggleGui(){
         open = !open;
-        gui.SetActive(open);
+        if(open){
+            GuiManager.instance.Open("sandbox");
+        }else{
+            GuiManager.instance.Close();
+        }
     }
 
     public void PlaceBlock(){

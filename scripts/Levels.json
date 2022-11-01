@@ -56,6 +56,13 @@
             "levelCode":"lFFFFFFFFFFFFFFFF-",
             "sandbox":true,
             "city":2
+        },
+        {
+            "name":"test 3",
+            "description":"",
+            "levelCode":"mFFBEFFFEFA20X1a-7",
+            "sandbox":false,
+            "city":1
         }
     ]
 }

@@ -1598,6 +1598,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: settings
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93148601b77cd3349a7892b34a957950
+      internalID: 1798533703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: place
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f027a794d545b9c4a8e9127afef32508
+      internalID: -217915277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1692,6 +1734,7 @@ TextureImporter:
       splitter: -1877515234
       up arrow: 846840230
       and 0: 106080844
+      settings: 1798533703
       unifier_blue: 846857355
       laser 0: 562943068
       mirror 0: 1258386523
@@ -1700,6 +1743,7 @@ TextureImporter:
       gui: 1226630808
       unifier_red: 734632283
       ballon tab: -2035583070
+      place: -217915277
       gameSprites_33: 834472337
       not done: -1971259466
       gameSprites_39: 1839199691

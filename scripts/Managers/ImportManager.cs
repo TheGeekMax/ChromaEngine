@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ImportManager : MonoBehaviour
 {  
+    public TextMeshProUGUI name;
+
     public string levelCode;
+    
 
     //[HideInInspector]
     public bool entered = false;
@@ -13,6 +17,7 @@ public class ImportManager : MonoBehaviour
         if(GameObject.FindWithTag("Keep") != null){
             GameObject keep = GameObject.FindWithTag("Keep");
             levelCode = keep.GetComponent<Keep>().LevelCode;
+            name.text = keep.GetComponent<Keep>().Name;
             GetComponent<SandboxManager>().sandboxMode = keep.GetComponent<Keep>().SandBoxMode;
         }
         GetComponent<SandboxManager>().UpdateSandboxMod();

@@ -28,6 +28,8 @@ public class Led : Bloc{
     public override InpData UpdateInput(InpData inp){
         if(inp.r == (int)color.x && inp.g == (int)color.y && inp.b == (int)color.z){
             GetComponent<WinObject>().isWin = true;
+        }else{
+            GetComponent<WinObject>().isWin = false;
         }
         UpdateSprite();
         return new InpData(inp.orientation, 255, 255, 255, false, true);

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class WinManager : MonoBehaviour{
 
-    public GameObject winPanel;
     [HideInInspector]
     public bool win = false;
 
@@ -16,12 +15,8 @@ public class WinManager : MonoBehaviour{
 
     void UpdateData(){
         if(win && !GetComponent<SandboxManager>().sandboxMode){
-            winPanel.SetActive(true);
+            GuiManager.instance.Open("win");
         }
-    }
-
-    void Awake(){
-        winPanel.SetActive(false);
     }
 
     public void IsWin(){

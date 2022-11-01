@@ -30,4 +30,8 @@ public class KeepManager : MonoBehaviour{
         keepObject.GetComponent<Keep>().Play();
     }
 
+    public void SetName(string name){
+        keepObject.GetComponent<Keep>().Name = name;
+    }
+
 }

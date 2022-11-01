@@ -24,7 +24,7 @@ public class TouchManager : MonoBehaviour
 
     // programme de detection de toucches
     void Update(){
-        if(SandboxManager.instance.open){
+        if(GuiManager.instance.open){
             return;
         }
         SandboxManager sandboxManager = GetComponent<SandboxManager>();
@@ -89,7 +89,7 @@ public class TouchManager : MonoBehaviour
                 type = 0;
                 choosenBloc = GetComponent<GridManager>().GetBlocObject((int)intTouchPos.x,(int)intTouchPos.y);
                 dontMove = true;
-                if(GetComponent<BorderManager>().IsBlocInBorder(intTouchPos)){
+                if(GetComponent<BorderManager>().IsBlocInBorder(intTouchPos) || GetComponent<SandboxManager>().sandboxMode){
                     dontMove = false;
                 }
             }else if(touch.phase == TouchPhase.Moved){
@@ -118,10 +118,15 @@ public class TouchManager : MonoBehaviour
                 int clampedX  = (int)Mathf.Clamp(intTouchPos.x,0,gridWidth-1);
                 int clampedY  = (int)Mathf.Clamp(intTouchPos.y,0,gridWidth-1);
                 if(type == 0){
-                    GetComponent<GridManager>().RotateBloc(clampedX, clampedY);
+                    if(GetComponent<GridManager>().GetBlocObject(clampedX, clampedY) != null){
+                        GetComponent<GridManager>().RotateBloc(clampedX, clampedY);
+                    }else if(GetComponent<SandboxManager>().sandboxMode){
+                        GetComponent<GridManager>().AddBloc(GetComponent<BlocManager>().FindBlocDataWithId(GetComponent<SandboxManager>().currentId).name,clampedX, clampedY);
+                        GetComponent<LaserManager>().GenerateLasers();
+                    }
                 }else if(!dontMove){
                     AudioManager.instance.Play(2);
-                    if(GetComponent<GridManager>().GetBlocObject(clampedX,clampedY) == null && GetComponent<BorderManager>().IsBlocInBorder(new Vector2(clampedX,clampedY))){
+                    if(GetComponent<GridManager>().GetBlocObject(clampedX,clampedY) == null && (GetComponent<BorderManager>().IsBlocInBorder(new Vector2(clampedX,clampedY)) || GetComponent<SandboxManager>().sandboxMode)){
                         GetComponent<GridManager>().SetBlocId(clampedX, clampedY,choosenBloc);
                         choosenBloc.transform.position = new Vector3(Mathf.Ceil(Mathf.Clamp(touchPos.x,-gridWidth/2+1,gridWidth/2))-1, Mathf.Ceil(Mathf.Clamp(touchPos.y,-gridWidth/2+1,gridWidth/2)), 0);
                     }else{
