@@ -9,7 +9,8 @@ public class LevelLoaderManager : MonoBehaviour
     //instance
     public static LevelLoaderManager instance;
 
-    //ficier json
+    //ficier json a mettre dans l'editor
+    public TextAsset levelData;
 
 
     void Awake(){
@@ -23,8 +24,7 @@ public class LevelLoaderManager : MonoBehaviour
 
     public void LoadData(){
         //etape 1 : charger les données (dans le dossier parent le Levels.json)
-        string path = Application.dataPath + "/scripts/Levels.json";
-        string jsonString = File.ReadAllText(path);
+        string jsonString = levelData.text;
         
         //etape 2 : charger les données
         LevelParser levelParser = JsonUtility.FromJson<LevelParser>(jsonString);
