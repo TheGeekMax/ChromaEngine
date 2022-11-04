@@ -9,5 +9,6 @@ public class LevelInfos{
     public string levelCode;
     public bool sandbox;
     public int city;
+    public int stars;
     public bool completed = false;
 }

@@ -29,6 +29,15 @@ public class LevelLoaderManager : MonoBehaviour
         //etape 2 : charger les données
         LevelParser levelParser = JsonUtility.FromJson<LevelParser>(jsonString);
 
+        //etape 2.5 : on edit les niveaux completé via le keep
+        foreach(string code in Keep.instance.finished_codes){
+            foreach(LevelInfos level in levelParser.levels){
+                if(level.levelCode == code){
+                    level.completed = true;
+                }
+            }
+        }
+
         //etape 3 : charger les boutons des villes
         //3.1 : ajouter les villes
         foreach(string city in levelParser.cities){
@@ -37,14 +46,14 @@ public class LevelLoaderManager : MonoBehaviour
         //3.2 : ajouter les niveaux
         foreach(LevelInfos level in levelParser.levels){
             if(level.sandbox){
-                LevelbuttonManager.instance.AddLevelSandBox(level.name,levelParser.cities[level.city],level.levelCode);
+                LevelbuttonManager.instance.AddLevelSandBox(level.name,levelParser.cities[level.city],level.levelCode,level.stars);
             }
             else{
                 if(level.completed){
-                    LevelbuttonManager.instance.AddLevelCompleted(level.name,levelParser.cities[level.city],level.levelCode);
+                    LevelbuttonManager.instance.AddLevelCompleted(level.name,levelParser.cities[level.city],level.levelCode,level.stars);
                 }
                 else{
-                    LevelbuttonManager.instance.AddLevelUnlocked(level.name,levelParser.cities[level.city],level.levelCode);
+                    LevelbuttonManager.instance.AddLevelUnlocked(level.name,levelParser.cities[level.city],level.levelCode,level.stars);
                 }
             }
         }

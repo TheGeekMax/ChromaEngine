@@ -7,13 +7,15 @@ using TMPro;
 public class ButtonData : MonoBehaviour{
     public string levelName;
     public string levelCode;
+    int stars;
     bool sandbox;
     public GameObject textObject;
     public GameObject imageObject;
 
-    public void UpdateData(string levelName, string levelCode, LevelbuttonManager.LevelButtonState state){
+    public void UpdateData(string levelName, string levelCode,int stars, LevelbuttonManager.LevelButtonState state){
         this.levelName = levelName;
         this.levelCode = levelCode;
+        this.stars = stars;
 
         switch(state){
             case LevelbuttonManager.LevelButtonState.Unlocked:
@@ -36,6 +38,7 @@ public class ButtonData : MonoBehaviour{
 
     public void Play(){
         KeepManager.instance.SetSandboxMode(sandbox);
+        KeepManager.instance.SetStars(stars);
         KeepManager.instance.SetName(levelName);
         KeepManager.instance.Play(levelCode);
     }

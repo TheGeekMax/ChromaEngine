@@ -95,7 +95,7 @@ public class LevelbuttonManager : MonoBehaviour{
             //Debug.Log(levelData.Key + " " + levelData.Value.cityName);
             if(levelData.Value.cityName == cityName){
                 GameObject levelButton = Instantiate(levelButtonPrefab, parentButton.transform);
-                levelButton.GetComponent<ButtonData>().UpdateData(levelData.Value.levelName, levelData.Value.levelCode, levelData.Value.state);
+                levelButton.GetComponent<ButtonData>().UpdateData(levelData.Value.levelName, levelData.Value.levelCode, levelData.Value.stars,levelData.Value.state);
             }
         }
     }
@@ -109,21 +109,21 @@ public class LevelbuttonManager : MonoBehaviour{
         }
     }
 
-    public void AddLevelUnlocked(string levelName, string city, string levelCode){
+    public void AddLevelUnlocked(string levelName, string city, string levelCode, int stars = 0){
         if(!levelDataDict.ContainsKey(levelName)){
-            levelDataDict.Add(levelName, LevelData.DefaultLevel(levelName, city,levelCode));
+            levelDataDict.Add(levelName, LevelData.DefaultLevel(levelName, city,levelCode, stars));
         }
     }
 
-    public void AddLevelCompleted(string levelName, string city,string levelCode){
+    public void AddLevelCompleted(string levelName, string city,string levelCode, int stars = 0){
         if(!levelDataDict.ContainsKey(levelName)){
-            levelDataDict.Add(levelName, LevelData.DefaultCompleted(levelName, city, levelCode));
+            levelDataDict.Add(levelName, LevelData.DefaultCompleted(levelName, city, levelCode,stars));
         }
     }
 
-    public void AddLevelSandBox(string levelName, string city, string levelCode){
+    public void AddLevelSandBox(string levelName, string city, string levelCode, int stars = 0){
         if(!levelDataDict.ContainsKey(levelName)){
-            levelDataDict.Add(levelName, LevelData.DefaultSandBox(levelName, city, levelCode));
+            levelDataDict.Add(levelName, LevelData.DefaultSandBox(levelName, city, levelCode,stars));
         }
     }
 }

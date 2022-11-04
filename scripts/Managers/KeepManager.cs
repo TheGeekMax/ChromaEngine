@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class KeepManager : MonoBehaviour{
     [HideInInspector]
     public GameObject keepObject;
+
+    //text qui affiche le nom du niveau
+    public TextMeshProUGUI starNameText;
 
     public static KeepManager instance;
 
@@ -18,11 +22,16 @@ public class KeepManager : MonoBehaviour{
     }
 
     void Start(){
-        keepObject = GameObject.Find("Keep");    
+        keepObject = GameObject.Find("Keep");
+        starNameText.text = Keep.instance.starCount.ToString();
     }
 
     public void SetSandboxMode(bool value){
         keepObject.GetComponent<Keep>().SandBoxMode = value;
+    }
+
+    public void SetStars(int value){
+        keepObject.GetComponent<Keep>().Stars = value;
     }
 
     public void Play(string levelCode){

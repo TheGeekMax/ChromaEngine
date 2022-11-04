@@ -5,23 +5,25 @@ public class LevelData{
     public string levelCode;
     public string cityName;
     public LevelbuttonManager.LevelButtonState state;
+    public int stars;
 
-    public LevelData(string levelName, string levelCode,string cityName, LevelbuttonManager.LevelButtonState state){
+    public LevelData(string levelName, string levelCode,string cityName,int strs, LevelbuttonManager.LevelButtonState state){
         this.levelName = levelName;
         this.levelCode = levelCode;
         this.cityName = cityName;
         this.state = state;
+        this.stars = strs;
     }
 
-    public static LevelData DefaultSandBox(string levelName,string cityName, string levelCode){
-        return new LevelData(levelName, levelCode, cityName, LevelbuttonManager.LevelButtonState.SandBox);
+    public static LevelData DefaultSandBox(string levelName,string cityName, string levelCode, int stars){
+        return new LevelData(levelName, levelCode, cityName,stars, LevelbuttonManager.LevelButtonState.SandBox);
     }
 
-    public static LevelData DefaultLevel(string levelName,string cityName, string levelCode){
-        return new LevelData(levelName, levelCode, cityName, LevelbuttonManager.LevelButtonState.Unlocked);
+    public static LevelData DefaultLevel(string levelName,string cityName, string levelCode, int stars){
+        return new LevelData(levelName, levelCode, cityName,stars, LevelbuttonManager.LevelButtonState.Unlocked);
     }
 
-    public static LevelData DefaultCompleted(string levelName,string cityName, string levelCode){
-        return new LevelData(levelName, levelCode, cityName, LevelbuttonManager.LevelButtonState.Completed);
+    public static LevelData DefaultCompleted(string levelName,string cityName, string levelCode, int stars){
+        return new LevelData(levelName, levelCode, cityName,stars, LevelbuttonManager.LevelButtonState.Completed);
     }
 }

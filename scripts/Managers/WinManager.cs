@@ -16,6 +16,12 @@ public class WinManager : MonoBehaviour{
     void UpdateData(){
         if(win && !GetComponent<SandboxManager>().sandboxMode){
             GuiManager.instance.Open("win");
+            //si le niveau a été finit pour la première fois
+            if(!Keep.instance.finished_codes.Contains(Keep.instance.LevelCode)){
+                Keep.instance.finished_codes.Add(Keep.instance.LevelCode);
+                Keep.instance.starCount += Keep.instance.Stars;
+            }
+            SaveSystem.SavePlayer(Keep.instance);
         }
     }
 
