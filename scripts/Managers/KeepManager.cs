@@ -43,4 +43,8 @@ public class KeepManager : MonoBehaviour{
         keepObject.GetComponent<Keep>().Name = name;
     }
 
+    public void SetDescription(string description){
+        keepObject.GetComponent<Keep>().Description = description;
+    }
+
 }

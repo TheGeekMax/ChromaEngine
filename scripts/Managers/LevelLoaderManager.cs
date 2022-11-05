@@ -50,10 +50,10 @@ public class LevelLoaderManager : MonoBehaviour
             }
             else{
                 if(level.completed){
-                    LevelbuttonManager.instance.AddLevelCompleted(level.name,levelParser.cities[level.city],level.levelCode,level.stars);
+                    LevelbuttonManager.instance.AddLevelCompleted(level.name,levelParser.cities[level.city],level.levelCode,level.stars,level.description);
                 }
                 else{
-                    LevelbuttonManager.instance.AddLevelUnlocked(level.name,levelParser.cities[level.city],level.levelCode,level.stars);
+                    LevelbuttonManager.instance.AddLevelUnlocked(level.name,levelParser.cities[level.city],level.levelCode,level.stars,level.description);
                 }
             }
         }

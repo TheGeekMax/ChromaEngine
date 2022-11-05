@@ -11,11 +11,13 @@ public class ButtonData : MonoBehaviour{
     bool sandbox;
     public GameObject textObject;
     public GameObject imageObject;
+    public string description;
 
-    public void UpdateData(string levelName, string levelCode,int stars, LevelbuttonManager.LevelButtonState state){
+    public void UpdateData(string levelName, string levelCode,int stars, LevelbuttonManager.LevelButtonState state, string description = ""){
         this.levelName = levelName;
         this.levelCode = levelCode;
         this.stars = stars;
+        this.description = description;
 
         switch(state){
             case LevelbuttonManager.LevelButtonState.Unlocked:
@@ -40,6 +42,7 @@ public class ButtonData : MonoBehaviour{
         KeepManager.instance.SetSandboxMode(sandbox);
         KeepManager.instance.SetStars(stars);
         KeepManager.instance.SetName(levelName);
+        KeepManager.instance.SetDescription(description);
         KeepManager.instance.Play(levelCode);
     }
 }

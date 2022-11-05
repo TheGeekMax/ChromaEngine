@@ -95,7 +95,7 @@ public class LevelbuttonManager : MonoBehaviour{
             //Debug.Log(levelData.Key + " " + levelData.Value.cityName);
             if(levelData.Value.cityName == cityName){
                 GameObject levelButton = Instantiate(levelButtonPrefab, parentButton.transform);
-                levelButton.GetComponent<ButtonData>().UpdateData(levelData.Value.levelName, levelData.Value.levelCode, levelData.Value.stars,levelData.Value.state);
+                levelButton.GetComponent<ButtonData>().UpdateData(levelData.Value.levelName, levelData.Value.levelCode, levelData.Value.stars,levelData.Value.state, levelData.Value.description);
             }
         }
     }
@@ -109,15 +109,15 @@ public class LevelbuttonManager : MonoBehaviour{
         }
     }
 
-    public void AddLevelUnlocked(string levelName, string city, string levelCode, int stars = 0){
+    public void AddLevelUnlocked(string levelName, string city, string levelCode, int stars = 0, string description = ""){
         if(!levelDataDict.ContainsKey(levelName)){
-            levelDataDict.Add(levelName, LevelData.DefaultLevel(levelName, city,levelCode, stars));
+            levelDataDict.Add(levelName, LevelData.DefaultLevel(levelName, city,levelCode, stars, description));
         }
     }
 
-    public void AddLevelCompleted(string levelName, string city,string levelCode, int stars = 0){
+    public void AddLevelCompleted(string levelName, string city,string levelCode, int stars = 0, string description = ""){
         if(!levelDataDict.ContainsKey(levelName)){
-            levelDataDict.Add(levelName, LevelData.DefaultCompleted(levelName, city, levelCode,stars));
+            levelDataDict.Add(levelName, LevelData.DefaultCompleted(levelName, city, levelCode,stars, description));
         }
     }
 

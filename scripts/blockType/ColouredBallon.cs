@@ -30,10 +30,14 @@ public class ColouredBallon : Bloc{
     public override InpData UpdateInput(InpData inp){
         if(inp.r == color.x && inp.g == color.y && inp.b == color.z){
             if(!SandboxManager.instance.sandboxMode){
-            cooldown = true;
+                cooldown = true;
             }
             return new InpData(inp.orientation,inp.r,inp.g,inp.b, false , true);
         }else{
+            if(!SandboxManager.instance.sandboxMode){
+                cooldown = false;
+                cooldownTime = 20;
+            }
             return new InpData(inp.orientation,inp.r,inp.g,inp.b, false , true);
         }
     }

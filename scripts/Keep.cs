@@ -9,6 +9,7 @@ public class Keep : MonoBehaviour
     int _stars;
     bool sandBoxMode = false;
     string _name = "Level Name";
+    string _description = "Level Description";
     public List<string> finished_codes;
     public int starCount;
 
@@ -59,6 +60,18 @@ public class Keep : MonoBehaviour
         set
         {
             _stars = value;
+        }
+    }
+
+    public string Description
+    {
+        get
+        {
+            return _description;
+        }
+        set
+        {
+            _description = value;
         }
     }
 

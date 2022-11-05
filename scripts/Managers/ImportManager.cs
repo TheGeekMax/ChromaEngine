@@ -6,6 +6,9 @@ using TMPro;
 public class ImportManager : MonoBehaviour
 {  
     public TextMeshProUGUI name;
+    public TextMeshProUGUI description;
+    public TextMeshProUGUI stars;
+    public TextMeshProUGUI starCount;
 
     public string levelCode;
     
@@ -18,6 +21,9 @@ public class ImportManager : MonoBehaviour
             GameObject keep = GameObject.FindWithTag("Keep");
             levelCode = keep.GetComponent<Keep>().LevelCode;
             name.text = keep.GetComponent<Keep>().Name;
+            description.text = keep.GetComponent<Keep>().Description;
+            stars.text = "you got " + keep.GetComponent<Keep>().Stars + " stars";
+            starCount.text = keep.GetComponent<Keep>().starCount.ToString();
             GetComponent<SandboxManager>().sandboxMode = keep.GetComponent<Keep>().SandBoxMode;
         }
         GetComponent<SandboxManager>().UpdateSandboxMod();
