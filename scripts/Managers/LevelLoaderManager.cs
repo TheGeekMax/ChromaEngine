@@ -22,6 +22,15 @@ public class LevelLoaderManager : MonoBehaviour
         }
     }
 
+    public void ResetPlayer(){
+        SaveSystem.ResetPlayer();
+        //on kill le Keep object
+        Destroy(Keep.instance.gameObject);
+        //on reload la scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+   
+    }
+
     public void LoadData(){
         //etape 1 : charger les données (dans le dossier parent le Levels.json)
         string jsonString = levelData.text;
@@ -40,20 +49,20 @@ public class LevelLoaderManager : MonoBehaviour
 
         //etape 3 : charger les boutons des villes
         //3.1 : ajouter les villes
-        foreach(string city in levelParser.cities){
-            LevelbuttonManager.instance.AddCity(city);
+        foreach(CityInfo city in levelParser.cities){
+            LevelbuttonManager.instance.AddCity(city.name,city.starcount);
         }
         //3.2 : ajouter les niveaux
         foreach(LevelInfos level in levelParser.levels){
             if(level.sandbox){
-                LevelbuttonManager.instance.AddLevelSandBox(level.name,levelParser.cities[level.city],level.levelCode,level.stars);
+                LevelbuttonManager.instance.AddLevelSandBox(level.name,levelParser.cities[level.city].name,level.levelCode,level.stars);
             }
             else{
                 if(level.completed){
-                    LevelbuttonManager.instance.AddLevelCompleted(level.name,levelParser.cities[level.city],level.levelCode,level.stars,level.description);
+                    LevelbuttonManager.instance.AddLevelCompleted(level.name,levelParser.cities[level.city].name,level.levelCode,level.stars,level.description);
                 }
                 else{
-                    LevelbuttonManager.instance.AddLevelUnlocked(level.name,levelParser.cities[level.city],level.levelCode,level.stars,level.description);
+                    LevelbuttonManager.instance.AddLevelUnlocked(level.name,levelParser.cities[level.city].name,level.levelCode,level.stars,level.description);
                 }
             }
         }

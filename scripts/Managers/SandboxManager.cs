@@ -43,6 +43,7 @@ public class SandboxManager : MonoBehaviour{
     public GameObject blockButton;
     public GameObject lightButton;
     public GameObject balloonButton;
+    public GameObject description;
 
     public static SandboxManager instance;
 
@@ -81,8 +82,10 @@ public class SandboxManager : MonoBehaviour{
         Debug.Log("UpdateSandboxMod");
         if(sandboxMode){
             tools.SetActive(true);
+            description.SetActive(false);
         }else{
             tools.SetActive(false);
+            description.SetActive(true);
         }
     }
 

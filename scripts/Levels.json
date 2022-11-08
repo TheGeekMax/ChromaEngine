@@ -1,5 +1,16 @@
 {
-    "cities":["Tutorial City","Test City","SandBox City"],
+    "cities":[{
+                "name":"Tutorial City",
+                "starcount":0
+            },
+            {
+                "name":"Test City",
+                "starcount":1
+            },
+            {
+                "name":"SandBox City",
+                "starcount":5
+            }],
     "levels":[
         {
             "name":"Niveau test 1",
@@ -23,7 +34,7 @@
             "levelCode":"sFFE1520B6J8R-34",
             "sandbox":false,
             "city":0,
-            "stars":5
+            "stars":2
         },
         {
             "name":"Test Ballons",

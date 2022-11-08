@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class LevelParser{
-    public CityInfo[] cities;
-    public LevelInfos[] levels;
+public class CityInfo{
+    public string name;
+    public int starcount;
 }

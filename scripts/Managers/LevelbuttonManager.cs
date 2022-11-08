@@ -24,7 +24,7 @@ public class LevelbuttonManager : MonoBehaviour{
         SandBox
     }
 
-    List<string> Cities;
+    Dictionary<string, CityData> Cities;
     Dictionary<string, LevelData> levelDataDict;
 
 
@@ -37,29 +37,11 @@ public class LevelbuttonManager : MonoBehaviour{
         }
 
         levelDataDict = new Dictionary<string, LevelData>();
-        Cities = new List<string>();
+        Cities = new Dictionary<string, CityData>();
     }
 
     void Start(){
         LevelLoaderManager.instance.LoadData();
-        /*
-        //add cities
-        AddCity("Tutorial City");
-        AddCity("Test City");
-        AddCity("SandBox City");
-
-        //add levels
-        AddLevelUnlocked("Niveau test 1","Test City","sB7FA134G5J5P-33");
-        AddLevelCompleted("Niveau test 2","Test City","mEFDDFED9F0015EA6C7J7P2i-33333");
-        AddLevelUnlocked("Win 1","Test City","sFFE1520B6J8R-34");
-        AddLevelCompleted("Test Ballons","Test City","lFFFFFDFF0F0FFFFF24650C6D1K6L6S6T7g-OMPNLQ333");
-        AddLevelUnlocked("Niveau hard 1","Test City","l000073F2F1F3F3848007A81F9G2NCO7QDW7Z7dBe7i7lEm-444443443");
-        AddLevelSandBox("Sandbox sm","SandBox City","sFFFF-");
-        AddLevelSandBox("Sandbox me","SandBox City","mFFFFFFFFF-");
-        AddLevelSandBox("Sandbox lg","SandBox City","lFFFFFFFFFFFFFFFF-");
-
-        ShowCities();
-        */
     }
 
     // Onclick functions
@@ -82,9 +64,10 @@ public class LevelbuttonManager : MonoBehaviour{
     public void ShowCities(){
         ResetButtons();
         backButton.SetActive(false);
-        foreach(string cityName in Cities){
+        foreach(KeyValuePair<string, CityData> city in Cities){
             GameObject cityButton = Instantiate(cityButtonPrefab, parentButton.transform);
-            cityButton.GetComponent<CityButton>().SetName(cityName);
+            cityButton.GetComponent<CityButton>().SetName(city.Value.name);
+            cityButton.GetComponent<CityButton>().SetStars(city.Value.starReq);
         }
     }
 
@@ -103,9 +86,9 @@ public class LevelbuttonManager : MonoBehaviour{
 
     //fonction d'ajout backend
 
-    public void AddCity(string cityName){
-        if(!Cities.Contains(cityName)){
-            Cities.Add(cityName);
+    public void AddCity(string cityName,int starReq){
+        if(!Cities.ContainsKey(cityName)){
+            Cities.Add(cityName,new CityData(cityName,starReq));
         }
     }
 
