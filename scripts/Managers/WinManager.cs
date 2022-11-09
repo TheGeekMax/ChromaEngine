@@ -7,8 +7,17 @@ public class WinManager : MonoBehaviour{
 
     [HideInInspector]
     public bool win = false;
+    [HideInInspector]
+    public bool finished = false;
+    public float winDelay = 1f;
 
-    public void Win(){
+    public IEnumerator Win(){
+        if(GetComponent<SandboxManager>().sandboxMode){
+            //on arrete la fonction
+            yield break;
+        }
+        finished = true;
+        yield return new WaitForSeconds(winDelay);
         win = true;
         UpdateData();
     }
@@ -27,7 +36,7 @@ public class WinManager : MonoBehaviour{
 
     public void IsWin(){
         if(GetComponent<GridManager>().IsWin()){
-            Win();
+            StartCoroutine(Win());
         }
     }
 

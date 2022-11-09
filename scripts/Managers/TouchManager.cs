@@ -24,7 +24,7 @@ public class TouchManager : MonoBehaviour
 
     // programme de detection de toucches
     void Update(){
-        if(GuiManager.instance.open){
+        if(GuiManager.instance.open || GetComponent<WinManager>().finished){
             return;
         }
         SandboxManager sandboxManager = GetComponent<SandboxManager>();
