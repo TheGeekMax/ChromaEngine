@@ -1,0 +1,174 @@
+{
+    "cities": [
+        {
+            "name": "The Sandbox",
+            "starcount": 0
+        },
+        {
+            "name": "Tutorial",
+            "starcount": 0
+        },
+        {
+            "name": "The Begining",
+            "starcount": 5
+        },
+        {
+            "name": "The Party",
+            "starcount": 10
+        }
+    ],
+    "levels": [
+        {
+            "name": "small",
+            "description": "",
+            "levelCode": "sFFFF-",
+            "sandbox": true,
+            "city": 0,
+            "stars": 0
+        },
+        {
+            "name": "medium",
+            "description": "",
+            "levelCode": "mFFFFFFFFF-",
+            "sandbox": true,
+            "city": 0,
+            "stars": 0
+        },
+        {
+            "name": "large",
+            "description": "",
+            "levelCode": "lFFFFFFFFFFFFFFFF-",
+            "sandbox": true,
+            "city": 0,
+            "stars": 0
+        },
+        {
+            "name": "Introduction",
+            "description": "You can move all element on white tile by dragging them !\nMoreover you can rotate all bloc by clicking on them (even one on black tile).\nturn on all light with laser to win !",
+            "levelCode": "s7770036B6J5O6P6Q6R-3",
+            "sandbox": false,
+            "city": 1,
+            "stars": 1
+        },
+        {
+            "name": "The lamp",
+            "description": "Lamp can be turn on by all kind of laser !",
+            "levelCode": "s7770031B6J5O5P6Q6R-33",
+            "sandbox": false,
+            "city": 1,
+            "stars": 1
+        },
+        {
+            "name": "Level 1",
+            "description": "",
+            "levelCode": "s715003696A6B6H5J5O6P2Q6R-33",
+            "sandbox": false,
+            "city": 1,
+            "stars": 1
+        },
+        {
+            "name": "Level 2",
+            "description": "",
+            "levelCode": "s27E452630B5G6O1P-33",
+            "sandbox": false,
+            "city": 1,
+            "stars": 1
+        },
+        {
+            "name": "Level 3",
+            "description": "Splitter duplicate the laser to all dirrections !",
+            "levelCode": "sB7FA134G5J5P-33",
+            "sandbox": false,
+            "city": 1,
+            "stars": 1
+        },
+        {
+            "name": "Led party",
+            "description": "Led can only be turn on by a laser of his color !",
+            "levelCode": "s7730031BAO8P-33",
+            "sandbox": false,
+            "city": 2,
+            "stars": 1
+        },
+        {
+            "name": "Let's add !",
+            "description": "adder add all color from input side (with the small color bar).\nAnd output it in the output side (the gray part)",
+            "levelCode": "s171603187ACQ-3",
+            "sandbox": false,
+            "city": 2,
+            "stars": 1
+        },
+        {
+            "name": "Level 4",
+            "description": "",
+            "levelCode": "s07708003C81B-47",
+            "sandbox": false,
+            "city": 2,
+            "stars": 1
+        },
+        {
+            "name": "Level 5",
+            "description": "",
+            "levelCode": "s8FF88003C81BAG-4743",
+            "sandbox": false,
+            "city": 2,
+            "stars": 1
+        },
+        {
+            "name": "Level 6",
+            "description": "",
+            "levelCode": "mFD7FD5F10052D1L7RAe8f9gDh-33434",
+            "sandbox": false,
+            "city": 2,
+            "stars": 1
+        },
+        {
+            "name": "Ballon",
+            "description": "White baloon can be exploded by all lasers !\nDestroy all of them !",
+            "levelCode": "s777E03KOKPKQ-3",
+            "sandbox": false,
+            "city": 3,
+            "stars": 1
+        },
+        {
+            "name": "Level 7",
+            "description": "",
+            "levelCode": "s7778036BKJKOKPKQ-33",
+            "sandbox": false,
+            "city": 3,
+            "stars": 2
+        },
+        {
+            "name": "Level 8",
+            "description": "",
+            "levelCode": "mC41DD5110800568696A6C6DKK6L6P6R6S6TKW6X6b6e6f6g6h8i6j-333334",
+            "sandbox": false,
+            "city": 3,
+            "stars": 2
+        },
+        {
+            "name": "Coloured Party",
+            "description": "Coloured baloon need to be exploded with the correct coloured laser",
+            "levelCode": "s7F7C031BMOLQ-3",
+            "sandbox": false,
+            "city": 3,
+            "stars": 1
+        },
+        {
+            "name": "Level 9",
+            "description": "",
+            "levelCode": "sF5D803696A6BLJ8P-343",
+            "sandbox": false,
+            "city": 3,
+            "stars": 2
+        },
+        {
+            "name": "Level 10",
+            "description": "an unifier take any coloured laser, and always output the same colours !",
+            "levelCode": "mAE3EEFEE4107224DG8LNT0WQX7YEaMfLj-4F3",
+            "sandbox": false,
+            "city": 3,
+            "stars": 3
+        }
+    ]
+}
